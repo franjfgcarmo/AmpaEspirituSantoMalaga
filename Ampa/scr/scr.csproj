@@ -7,11 +7,26 @@
     <ProjectGuid>{E919C81F-A1E5-4DB8-83DF-2E77FFF89FCC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>scr</RootNamespace>
-    <AssemblyName>scr</AssemblyName>
+    <RootNamespace>Ampa</RootNamespace>
+    <AssemblyName>Ampa</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,9 +47,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo_Colegio_color-001.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +77,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Control\CtlButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtlButton.Designer.cs">
+      <DependentUpon>CtlButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AmpaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmpaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Alumnos.cs">
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AmpaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmpaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AmpaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AmpaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AmpaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Cursos.cs">
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Socios.cs">
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Tutores.cs">
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Usuario.cs">
+      <DependentUpon>AmpaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Frm\FrmAcceso.Designer.cs">
+      <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmSocios.Designer.cs">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmBase.Designer.cs">
+      <DependentUpon>FrmBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\CtlButton.resx">
+      <DependentUpon>CtlButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmAcceso.resx">
+      <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmSocios.resx">
+      <DependentUpon>FrmSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmBase.resx">
+      <DependentUpon>FrmBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +158,28 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Ficha.rdlc" />
+    <EntityDeploy Include="Entities\AmpaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AmpaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\AmpaDataSet.xsc">
+      <DependentUpon>AmpaDataSet.xsd</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Entities\AmpaDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AmpaDataSet.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Entities\AmpaDataSet.xss">
+      <DependentUpon>AmpaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Entities\AmpaModel.edmx.diagram">
+      <DependentUpon>AmpaModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +193,52 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppData\Ampa.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppData\Ampa_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Ampa.mdf</DependentUpon>
+    </Content>
+    <Content Include="Entities\AmpaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmpaModel.edmx</DependentUpon>
+      <LastGenOutput>AmpaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\AmpaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AmpaModel.edmx</DependentUpon>
+      <LastGenOutput>AmpaModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Images\Logo_Colegio_color-001.ico" />
+    <Content Include="Leeme.txt" />
+    <Content Include="Logo_Colegio_color-001.ico" />
+    <EmbeddedResource Include="Images\Logo Colegio color-001.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

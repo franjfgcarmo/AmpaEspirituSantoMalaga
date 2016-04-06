@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace scr
+namespace Ampa.Frm
 {
-    public partial class Form1 : Form
+    public partial class FrmAcceso : Ampa.Frm.FrmBase
     {
-        public Form1()
+        public FrmAcceso()
         {
             InitializeComponent();
         }
