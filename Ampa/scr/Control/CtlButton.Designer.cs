@@ -48,9 +48,7 @@
             this.button.UseVisualStyleBackColor = false;
             // 
             // CtlButton
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            //     
             this.Controls.Add(this.button);
             this.Name = "CtlButton";
             this.Size = new System.Drawing.Size(117, 39);
@@ -61,5 +59,6 @@
         #endregion
 
         private System.Windows.Forms.Button button;
+
     }
 }

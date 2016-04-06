@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
+using System.Drawing;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ampa.Control
+namespace Ampa.Frm
 {
-    public partial class CtlButton : Button
+    public partial class FrmSocio : Ampa.Frm.FrmBase
     {
-        public CtlButton()
+        public FrmSocio()
         {
             InitializeComponent();
         }
