@@ -1,0 +1,17 @@
+﻿Pantalla de acceso.
+Cuando acceda, siempre cogerá el último año académico.
+Creación de un nuevo año. Será obligatorio.
+Se podrá importar los contactos, realmente se añadirá una relación año socio. Al realizar la importación, se guardará un histórico de los alumnos. Los alumnos cambian de cursos.
+Formulario de Socios. 
+Añadir a la tabla la opción de tutores legales.
+Vista detalle. Se mostrará unos de los dos tutores (el principal), dos teléfonos y el email. En el detalle se mostrara los alumnos.
+Opciones:
+-	Ver Ficha. Mostrará el número de socio y los tutores y alumnos. Mostrará dos Grid. Uno con la información de los tutores y otro con las de los alumnos.
+Al pinchan en cada rejilla ya sea tutor o alumno mostrará los datos para permitir guardarlos. Se mostraran en modo lectura, Se permitirán editar.
+-	Imprimir Ficha. Permitirá imprimir los datos de un socio en concreto.
+-	Nuevo Socio. Permitirá Añadir un nuevo socio.
+Formulario de Nuevo Socio y edición de socio.
+Opción de Nuevo: 
+Permitirá importar un usuario, buscará por nombre y apellidos. Hacer doble click o añadir. Permitirá la edición de todos los datos.
+Nuevo desde Cero. Se rellenan los datos y permite añadir tutores y alumnos. Los alumnos se podrán añadir e eliminar.
+Opción de editar: Permitirá los mismo que la opción nuevo pero sin la posibilidad de importar usuario.
