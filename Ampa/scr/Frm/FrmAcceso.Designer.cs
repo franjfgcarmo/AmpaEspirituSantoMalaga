@@ -39,7 +39,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(72, 62);
+            this.label2.Location = new System.Drawing.Point(75, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 8;
@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(72, 27);
+            this.label1.Location = new System.Drawing.Point(75, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 7;
@@ -58,26 +58,27 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(163, 59);
+            this.txtPassword.Location = new System.Drawing.Point(166, 63);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(115, 23);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUser
             // 
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.Location = new System.Drawing.Point(163, 21);
+            this.txtUser.Location = new System.Drawing.Point(166, 25);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(115, 23);
-            this.txtUser.TabIndex = 5;
+            this.txtUser.TabIndex = 1;
             // 
             // ctlButton1
             // 
-            this.ctlButton1.Location = new System.Drawing.Point(118, 108);
-            this.ctlButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctlButton1.Location = new System.Drawing.Point(123, 108);
+            this.ctlButton1.Margin = new System.Windows.Forms.Padding(4);
             this.ctlButton1.Name = "ctlButton1";
             this.ctlButton1.Size = new System.Drawing.Size(117, 39);
-            this.ctlButton1.TabIndex = 9;
+            this.ctlButton1.TabIndex = 3;
+            this.ctlButton1.Click += new System.EventHandler(this.ctlButton1_Click);
             // 
             // FrmAcceso
             // 
@@ -89,6 +90,7 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Name = "FrmAcceso";
+            this.Load += new System.EventHandler(this.FrmAcceso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
