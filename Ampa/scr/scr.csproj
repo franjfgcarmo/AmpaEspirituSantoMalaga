@@ -77,11 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\CtlButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Control\CtlButton.Designer.cs">
-      <DependentUpon>CtlButton.cs</DependentUpon>
+    <Compile Include="Control\CustomButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\AmpaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -144,9 +141,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Control\CtlButton.resx">
-      <DependentUpon>CtlButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
     </EmbeddedResource>
