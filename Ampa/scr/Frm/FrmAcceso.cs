@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Ampa.Entities;
@@ -29,7 +30,7 @@ namespace Ampa.Frm
         {
             if (string.IsNullOrWhiteSpace(txtUser.Text) && string.IsNullOrWhiteSpace(txtPassword.Text)) { return; }
 
-            var user = _ampaEntities.Usuario.FirstOrDefaultAsync(w => w.Nombre.ToLower().Trim() == txtUser.Text.ToLower().Trim() && w.password.ToLower().Trim() == txtPassword.Text.ToLower().Trim());
+            var user = _ampaEntities.Usuarios.FirstOrDefault(w => w.Nombre.ToLower().Trim() == txtUser.Text.ToLower().Trim() && w.password.ToLower().Trim() == txtPassword.Text.ToLower().Trim());
             if (user == null) return;
             Close();
             var th = new Thread(OpenNewForm);

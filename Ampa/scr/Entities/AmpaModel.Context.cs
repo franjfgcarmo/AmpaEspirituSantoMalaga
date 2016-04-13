@@ -25,10 +25,12 @@ namespace Ampa.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Alumnos> Alumnos { get; set; }
-        public virtual DbSet<Cursos> Cursos { get; set; }
-        public virtual DbSet<Socios> Socios { get; set; }
-        public virtual DbSet<Tutores> Tutores { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Alumno> Alumnos { get; set; }
+        public virtual DbSet<Curso> Cursos { get; set; }
+        public virtual DbSet<CursosSocio> CursosSocios { get; set; }
+        public virtual DbSet<HistoricoAlumno> HistoricoAlumnos { get; set; }
+        public virtual DbSet<Socio> Socios { get; set; }
+        public virtual DbSet<Tutore> Tutores { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

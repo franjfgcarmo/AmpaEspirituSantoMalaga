@@ -12,25 +12,26 @@ namespace Ampa.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Socios
+    public partial class Socio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Socios()
+        public Socio()
         {
-            this.Alumnos = new HashSet<Alumnos>();
-            this.Tutores = new HashSet<Tutores>();
-            this.Cursos = new HashSet<Cursos>();
+            this.Alumnos = new HashSet<Alumno>();
+            this.CursosSocios = new HashSet<CursosSocio>();
+            this.HistoricoAlumnos = new HashSet<HistoricoAlumno>();
+            this.Tutores = new HashSet<Tutore>();
         }
     
         public int Id { get; set; }
-        public string Observaciones { get; set; }
-        public Nullable<bool> PagoPorBanco { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Alumnos> Alumnos { get; set; }
+        public virtual ICollection<Alumno> Alumnos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tutores> Tutores { get; set; }
+        public virtual ICollection<CursosSocio> CursosSocios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cursos> Cursos { get; set; }
+        public virtual ICollection<HistoricoAlumno> HistoricoAlumnos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tutore> Tutores { get; set; }
     }
 }

@@ -12,18 +12,21 @@ namespace Ampa.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Cursos
+    public partial class Curso
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cursos()
+        public Curso()
         {
-            this.Socios = new HashSet<Socios>();
+            this.CursosSocios = new HashSet<CursosSocio>();
+            this.HistoricoAlumnos = new HashSet<HistoricoAlumno>();
         }
     
         public int Id { get; set; }
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Socios> Socios { get; set; }
+        public virtual ICollection<CursosSocio> CursosSocios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoricoAlumno> HistoricoAlumnos { get; set; }
     }
 }

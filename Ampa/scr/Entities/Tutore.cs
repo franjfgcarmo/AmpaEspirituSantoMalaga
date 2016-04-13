@@ -12,7 +12,7 @@ namespace Ampa.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Tutores
+    public partial class Tutore
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -22,6 +22,6 @@ namespace Ampa.Entities
         public string Email { get; set; }
         public Nullable<int> SocioId { get; set; }
     
-        public virtual Socios Socios { get; set; }
+        public virtual Socio Socio { get; set; }
     }
 }
