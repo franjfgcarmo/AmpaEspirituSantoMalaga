@@ -1,37 +1,22 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
-using Ampa.Entities;
+using Ampa.ConnectionProvider;
 using Ampa.Frm;
 
 namespace Ampa
 {
-    static class Program
+    internal static class Program
     {
-        public static AmpaEntities AmpaEntities= new AmpaEntities();
-
+        public static Connection DbConnection = new Connection();
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-
             Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            AmpaEntities = new AmpaEntities();
-            try
-            {
-                //Evita que el servicio esté parado.
-                var user = AmpaEntities.Usuarios.ToList();
-            }
-            catch (Exception ex)
-            {
-                
-                
-            }
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmAcceso());
-            
         }
     }
 }
