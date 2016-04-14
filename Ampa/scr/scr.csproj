@@ -215,13 +215,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ampa.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Ampa_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Ampa.mdf</DependentUpon>
-    </Content>
     <Content Include="AppData\Ampa.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

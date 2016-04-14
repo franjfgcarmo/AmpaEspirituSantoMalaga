@@ -13,8 +13,8 @@ namespace Ampa.Frm
 {
     public partial class FrmAcceso : Ampa.Frm.FrmBase
     {
-        private readonly AmpaEntities _ampaEntities= new AmpaEntities();
-
+       // private readonly AmpaEntities _ampaEntities= new AmpaEntities();
+        //Program.AmpaEntities = new AmpaEntities();
         public FrmAcceso()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Ampa.Frm
         {
             if (string.IsNullOrWhiteSpace(txtUser.Text) && string.IsNullOrWhiteSpace(txtPassword.Text)) { return; }
 
-            var user = _ampaEntities.Usuarios.FirstOrDefault(w => w.Nombre.ToLower().Trim() == txtUser.Text.ToLower().Trim() && w.password.ToLower().Trim() == txtPassword.Text.ToLower().Trim());
+            var user = Program.AmpaEntities.Usuarios.FirstOrDefault(w => w.Nombre.ToLower().Trim() == txtUser.Text.ToLower().Trim() && w.password.ToLower().Trim() == txtPassword.Text.ToLower().Trim());
             if (user == null) return;
             Close();
             var th = new Thread(OpenNewForm);
