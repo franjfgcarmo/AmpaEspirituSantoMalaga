@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Ampa.Classes
+﻿namespace Ampa.Modelo
 {
     public class Tutores
     {
@@ -14,6 +9,7 @@ namespace Ampa.Classes
         public string Movil { get; set; }
         public string Email { get; set; }
         public int SocioId { get; set; }
+        public bool EsPrincipal { get; set; }
 
     }
 }

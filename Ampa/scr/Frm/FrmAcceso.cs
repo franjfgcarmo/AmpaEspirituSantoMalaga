@@ -30,8 +30,14 @@ namespace Ampa.Frm
             {
                 if (!userService.ExisteUsuario(txtUser.Text, txtPassword.Text))
                     return;
+                
             }
-           
+            using (var curso = CursoService.GetInstance())
+            {
+                Program.ActualCurso = curso.ObtenerCursoAcademico();
+            }
+
+
             var th = new Thread(OpenNewForm);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();

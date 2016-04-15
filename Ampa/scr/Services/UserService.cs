@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Ampa.Classes;
+using Ampa.Modelo;
 using Dapper;
 
 namespace Ampa.Services

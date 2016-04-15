@@ -1,56 +1,54 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using Ampa.Classes;
 using Ampa.Helper;
+using Ampa.Modelo;
 using Ampa.Services;
 
 namespace Ampa.Frm
 {
     public partial class FrmSocios : FrmBase
     {
-        private bool SuppressAutoSelection=false;
+        //todo: mostrar un combo con los cursos académicos.
+        private bool _suppressAutoSelection;
+
         public FrmSocios()
         {
             InitializeComponent();
         }
 
-        private void panel2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
-        private void FrmSocios_Load(object sender, System.EventArgs e)
+        private void FrmSocios_Load(object sender, EventArgs e)
         {
             List<Tutores> tutores;
             using (var service = TutorService.GetInstance())
             {
-                tutores = service.ObtenerTutoresPrincipales(2015);
+                tutores = service.ObtenerTutoresPrincipales(Program.ActualCurso.Id);
             }
-            SuppressAutoSelection = true;
+            _suppressAutoSelection = true;
             dgvSocios.DataSource = tutores;
             dgvSocios.Refresh();
-            SuppressAutoSelection = false;
+            _suppressAutoSelection = false;
             dgvSocios.Rows[0].Selected = true;
+            dgvSocios_SelectionChanged(dgvSocios, null);
         }
 
-        private void dgvSocios_SelectionChanged(object sender, System.EventArgs e)
+        private void dgvSocios_SelectionChanged(object sender, EventArgs e)
         {
-            if (SuppressAutoSelection) return;
-            var dvg = ((DataGridView) sender);
+            if (_suppressAutoSelection) return;
+            var dvg = (DataGridView) sender;
             var socioId = 0;
-            if (dvg.CurrentRow!=null)
+            if (dvg.CurrentRow != null)
             {
                 var row = dvg.CurrentRow;
                 socioId = int.Parse(row.Cells["SocioId"].Value.ToString());
             }
-            //if (dvg.CurrentCell.Selected)
-            //{
-            //    var row = dvg.cell[dvg.CurrentCell.RowIndex];
-            //    socioId = int.Parse(row.Cells["SocioId"].Value.ToString());
-            //}
             if (socioId == 0) return;
-            List<Alumnos> alumnos;
-            using (var service = AlumnosService.GetInstance())
+            List<Alumno> alumnos;
+            using (var service = AlumnoService.GetInstance())
             {
                 alumnos = service.ObtenerAlumnosPorSocioId(socioId);
             }
@@ -58,20 +56,42 @@ namespace Ampa.Frm
             dgvAlumnos.Refresh();
         }
 
-        private void txtBusqueda_TextChanged(object sender, System.EventArgs e)
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             var txt = ((TextBox) sender).Text;
             if (string.IsNullOrWhiteSpace(txt)) return;
             List<Tutores> tutores;
             using (var service = TutorService.GetInstance())
             {
-                tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), 2015);
+                tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), Program.ActualCurso.Id);
             }
-            SuppressAutoSelection = true;
+            _suppressAutoSelection = true;
             dgvSocios.DataSource = tutores;
             dgvSocios.Refresh();
-            SuppressAutoSelection = false;
+            _suppressAutoSelection = false;
             //dgvSocios.Rows[0].Selected = true;
+        }
+
+        private void btnNuevoSocio_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnNuevoCurso_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dgvSocios_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var dvg = (DataGridView)sender;
+            var socioId = 0;
+            if (dvg.CurrentRow != null)
+            {
+                var row = dvg.CurrentRow;
+                socioId = int.Parse(row.Cells["SocioId"].Value.ToString());
+            }
+            if (socioId == 0) return;
+            var frm = new FrmSocio(TipoEdicion.Edicion,socioId);
+            frm.Show();
         }
     }
 }

@@ -74,10 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Alumnos.cs" />
-    <Compile Include="Classes\TipoEdicion.cs" />
-    <Compile Include="Classes\Tutores.cs" />
-    <Compile Include="Classes\Usuarios.cs" />
+    <Compile Include="Modelo\Alumnos.cs" />
+    <Compile Include="Modelo\Curso.cs" />
+    <Compile Include="Modelo\Socio.cs" />
+    <Compile Include="Modelo\TipoEdicion.cs" />
+    <Compile Include="Modelo\Tutores.cs" />
+    <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="ConnectionProvider\Connection.cs" />
     <Compile Include="Control\CustomButton.cs">
       <SubType>Component</SubType>
@@ -124,7 +126,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlumnosService.cs" />
+    <Compile Include="Services\CursoService.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\SocioService.cs" />
     <Compile Include="Services\TutorService.cs" />
     <Compile Include="Services\UserService.cs" />
     <EmbeddedResource Include="Frm\FrmAcceso.resx">

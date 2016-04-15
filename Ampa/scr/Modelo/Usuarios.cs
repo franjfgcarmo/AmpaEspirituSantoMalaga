@@ -1,4 +1,4 @@
-﻿namespace Ampa.Classes
+﻿namespace Ampa.Modelo
 {
     public class Usuarios
     {

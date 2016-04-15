@@ -9,7 +9,7 @@ namespace Ampa.Control
         {
             BackColor = Color.FromArgb(0, 127, 255);
           //  Dock = DockStyle.Fill;
-            FlatAppearance.BorderColor = Color.FromArgb(2, 0, 181);
+            FlatAppearance.BorderColor = Color.FromArgb(255, 255, 255);
             FlatAppearance.BorderSize = 2;
             FlatStyle = FlatStyle.Flat;
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
