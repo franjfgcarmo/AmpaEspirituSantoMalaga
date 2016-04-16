@@ -78,7 +78,7 @@
     <Compile Include="Modelo\Curso.cs" />
     <Compile Include="Modelo\Socio.cs" />
     <Compile Include="Modelo\TipoEdicion.cs" />
-    <Compile Include="Modelo\Tutores.cs" />
+    <Compile Include="Modelo\Tutor.cs" />
     <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="ConnectionProvider\Connection.cs" />
     <Compile Include="Control\CustomButton.cs">

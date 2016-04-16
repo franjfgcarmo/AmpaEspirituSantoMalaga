@@ -43,5 +43,13 @@ namespace Ampa.Frm
             th.Start();
             Close();
         }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                customButton1_Click(null, null);
+            }
+        }
     }
 }

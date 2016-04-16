@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label8 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.chckPagaPorBanco = new System.Windows.Forms.CheckBox();
@@ -66,6 +64,14 @@
             this.txtNombreTutor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.grdTutor = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Movil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPrincipal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SocioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlImportarSocio = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.grdImportarSocios = new System.Windows.Forms.DataGridView();
@@ -75,14 +81,8 @@
             this.btnNuevoSocio = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Movil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EsPrincipal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SocioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTutorId = new System.Windows.Forms.TextBox();
+            this.TxtAlumnoId = new System.Windows.Forms.TextBox();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -141,6 +141,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TxtAlumnoId);
             this.panel1.Controls.Add(this.btnNuevoAlumno);
             this.panel1.Controls.Add(this.btnGuardarAlumno);
             this.panel1.Controls.Add(this.btnEditarAlumno);
@@ -276,14 +277,6 @@
             this.Curso,
             this.SocioIdAlumno,
             this.IdAlumno});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlumno.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAlumno.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgvAlumno.GridColor = System.Drawing.Color.CornflowerBlue;
             this.dgvAlumno.Location = new System.Drawing.Point(2, 18);
@@ -296,6 +289,7 @@
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumno.Size = new System.Drawing.Size(366, 113);
             this.dgvAlumno.TabIndex = 9;
+            this.dgvAlumno.SelectionChanged += new System.EventHandler(this.dgvAlumno_SelectionChanged);
             // 
             // NombreAlumno
             // 
@@ -354,6 +348,7 @@
             // 
             // pnlEditTutor
             // 
+            this.pnlEditTutor.Controls.Add(this.txtTutorId);
             this.pnlEditTutor.Controls.Add(this.btnNuevoTutor);
             this.pnlEditTutor.Controls.Add(this.btnGuardarTutor);
             this.pnlEditTutor.Controls.Add(this.btnEditarTutor);
@@ -389,6 +384,7 @@
             this.btnNuevoTutor.TabIndex = 11;
             this.btnNuevoTutor.Text = "Nuevo Tutor";
             this.btnNuevoTutor.UseVisualStyleBackColor = false;
+            this.btnNuevoTutor.Click += new System.EventHandler(this.btnNuevoTutor_Click);
             // 
             // btnGuardarTutor
             // 
@@ -405,6 +401,7 @@
             this.btnGuardarTutor.TabIndex = 10;
             this.btnGuardarTutor.Text = "Guardar Tutor";
             this.btnGuardarTutor.UseVisualStyleBackColor = false;
+            this.btnGuardarTutor.Click += new System.EventHandler(this.btnGuardarTutor_Click);
             // 
             // btnEditarTutor
             // 
@@ -421,6 +418,7 @@
             this.btnEditarTutor.TabIndex = 1;
             this.btnEditarTutor.Text = "Editar Tutor";
             this.btnEditarTutor.UseVisualStyleBackColor = false;
+            this.btnEditarTutor.Click += new System.EventHandler(this.btnEditarTutor_Click_1);
             // 
             // txtApellidoTutor
             // 
@@ -527,14 +525,6 @@
             this.Email,
             this.EsPrincipal,
             this.SocioId});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdTutor.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdTutor.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdTutor.GridColor = System.Drawing.Color.CornflowerBlue;
             this.grdTutor.Location = new System.Drawing.Point(2, 18);
@@ -547,6 +537,69 @@
             this.grdTutor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdTutor.Size = new System.Drawing.Size(832, 105);
             this.grdTutor.TabIndex = 9;
+            this.grdTutor.SelectionChanged += new System.EventHandler(this.grdTutor_SelectionChanged_1);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 180;
+            // 
+            // Apellidos
+            // 
+            this.Apellidos.DataPropertyName = "Apellidos";
+            this.Apellidos.HeaderText = "Apellidos";
+            this.Apellidos.Name = "Apellidos";
+            this.Apellidos.ReadOnly = true;
+            this.Apellidos.Width = 180;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Télefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // Movil
+            // 
+            this.Movil.DataPropertyName = "Movil";
+            this.Movil.HeaderText = "Móvil";
+            this.Movil.Name = "Movil";
+            this.Movil.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 130;
+            // 
+            // EsPrincipal
+            // 
+            this.EsPrincipal.DataPropertyName = "EsPrincipal";
+            this.EsPrincipal.HeaderText = "Principal";
+            this.EsPrincipal.Name = "EsPrincipal";
+            this.EsPrincipal.ReadOnly = true;
+            this.EsPrincipal.Width = 80;
+            // 
+            // SocioId
+            // 
+            this.SocioId.DataPropertyName = "SocioId";
+            this.SocioId.HeaderText = "SocioId";
+            this.SocioId.Name = "SocioId";
+            this.SocioId.ReadOnly = true;
+            this.SocioId.Visible = false;
             // 
             // pnlImportarSocio
             // 
@@ -667,66 +720,23 @@
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 4;
             // 
-            // Id
+            // txtTutorId
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
+            this.txtTutorId.Location = new System.Drawing.Point(733, 45);
+            this.txtTutorId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTutorId.Name = "txtTutorId";
+            this.txtTutorId.Size = new System.Drawing.Size(58, 23);
+            this.txtTutorId.TabIndex = 12;
+            this.txtTutorId.Visible = false;
             // 
-            // Nombre
+            // TxtAlumnoId
             // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 180;
-            // 
-            // Apellidos
-            // 
-            this.Apellidos.DataPropertyName = "Apellidos";
-            this.Apellidos.HeaderText = "Apellidos";
-            this.Apellidos.Name = "Apellidos";
-            this.Apellidos.ReadOnly = true;
-            this.Apellidos.Width = 180;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Télefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Movil
-            // 
-            this.Movil.DataPropertyName = "Movil";
-            this.Movil.HeaderText = "Móvil";
-            this.Movil.Name = "Movil";
-            this.Movil.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 130;
-            // 
-            // EsPrincipal
-            // 
-            this.EsPrincipal.HeaderText = "Principal";
-            this.EsPrincipal.Name = "EsPrincipal";
-            this.EsPrincipal.ReadOnly = true;
-            this.EsPrincipal.Width = 80;
-            // 
-            // SocioId
-            // 
-            this.SocioId.DataPropertyName = "SocioId";
-            this.SocioId.HeaderText = "SocioId";
-            this.SocioId.Name = "SocioId";
-            this.SocioId.ReadOnly = true;
-            this.SocioId.Visible = false;
+            this.TxtAlumnoId.Location = new System.Drawing.Point(414, 63);
+            this.TxtAlumnoId.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtAlumnoId.Name = "TxtAlumnoId";
+            this.TxtAlumnoId.Size = new System.Drawing.Size(44, 23);
+            this.TxtAlumnoId.TabIndex = 13;
+            this.TxtAlumnoId.Visible = false;
             // 
             // FrmSocio
             // 
@@ -813,5 +823,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EsPrincipal;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioId;
+        private System.Windows.Forms.TextBox txtTutorId;
+        private System.Windows.Forms.TextBox TxtAlumnoId;
     }
 }

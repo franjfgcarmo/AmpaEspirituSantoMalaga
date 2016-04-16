@@ -23,7 +23,7 @@ namespace Ampa.Frm
 
         private void FrmSocios_Load(object sender, EventArgs e)
         {
-            List<Tutores> tutores;
+            List<Tutor> tutores;
             using (var service = TutorService.GetInstance())
             {
                 tutores = service.ObtenerTutoresPrincipales(Program.ActualCurso.Id);
@@ -60,7 +60,7 @@ namespace Ampa.Frm
         {
             var txt = ((TextBox) sender).Text;
             if (string.IsNullOrWhiteSpace(txt)) return;
-            List<Tutores> tutores;
+            List<Tutor> tutores;
             using (var service = TutorService.GetInstance())
             {
                 tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), Program.ActualCurso.Id);

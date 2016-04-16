@@ -8,6 +8,6 @@ namespace Ampa.Modelo
         public string Observaciones { get; set; }
         public bool PagoPorBanco { get; set; }
         public List<Alumno> Alumnos { get; set; }
-        public List<Tutores> Tutores { get; set; }
+        public List<Tutor> Tutores { get; set; }
     }
 }

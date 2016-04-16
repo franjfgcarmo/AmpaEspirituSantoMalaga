@@ -11,36 +11,43 @@ namespace Ampa.Services
         {
             return new TutorService();
         }
-
-        public List<Tutores> ObtenerTutoresPorSocioId(int anyo, int socioId)
+        public Tutor ObtenerTutorById(int id)
+        {
+            var query = string.Format("SELECT t.* FROM " +
+                                      "Tutores t INNER JOIN " +
+                                      "CursosSocios cs on cs.SocioId = t.SocioId " +
+                                      "WHERE t.Id = {0}", id);
+            return Connection.DbConnection.Query<Tutor>(query).FirstOrDefault();
+        }
+        public List<Tutor> ObtenerTutoresPorSocioId(int anyo, int socioId)
         {
             var query = string.Format("SELECT t.* FROM " +
                                       "Tutores t INNER JOIN " +
                                       "CursosSocios cs on cs.SocioId = t.SocioId " +
                                       "WHERE cs.CursoId = {0} AND t.SocioId={1}", anyo, socioId);
-            return Connection.DbConnection.Query<Tutores>(query).ToList();
+            return Connection.DbConnection.Query<Tutor>(query).ToList();
         }
 
-        public List<Tutores> ObtenerTutoresPrincipales(int anyo)
+        public List<Tutor> ObtenerTutoresPrincipales(int anyo)
         {
             var query = "SELECT t.* " +
                         "FROM Tutores t INNER JOIN " +
                         "CursosSocios cs on cs.SocioId = t.SocioId " +
                         "WHERE t.EsPrincipal=True AND cs.CursoId =" + anyo;
-            return Connection.DbConnection.Query<Tutores>(query).ToList();
+            return Connection.DbConnection.Query<Tutor>(query).ToList();
         }
 
-        public List<Tutores> BusquedaTutoresPorNombre(string busqueda, int anyo)
+        public List<Tutor> BusquedaTutoresPorNombre(string busqueda, int anyo)
         {
             var query = string.Format(@"SELECT t.* 
                             FROM Tutores t INNER JOIN
                                 CursosSocios cs on cs.SocioId = t.SocioId 
                             WHERE (instr(1,t.Nombre +"" ""+ t.Apellidos,'{0}')  or instr(1,t.Apellidos,'{0}') ) AND cs.CursoId ={1}",
                 busqueda, anyo);
-            return Connection.DbConnection.Query<Tutores>(query).ToList();
+            return Connection.DbConnection.Query<Tutor>(query).ToList();
         }
 
-        public bool Update(Tutores tutor)
+        public bool Update(Tutor tutor)
         {
             var query = string.Format("Update Tutores Set " +
                                       "Nombre = '{0}'," +
@@ -54,7 +61,7 @@ namespace Ampa.Services
             return Connection.Execute(query) > 0;
         }
 
-        public bool Insert(Tutores tutor)
+        public bool Insert(Tutor tutor)
         {
             var query = string.Format("INSERT INTO Alumnos " +
                                       "(Nombre,Apellidos, Telefono, Movil, Email, EsPrincipal, SocioId)" +
@@ -64,7 +71,7 @@ namespace Ampa.Services
             return Connection.Execute(query) > 0;
         }
 
-        public bool Insert(List<Tutores> tutores)
+        public bool Insert(List<Tutor> tutores)
         {
             foreach (var tutor in tutores)
             {

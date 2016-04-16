@@ -11,7 +11,11 @@ namespace Ampa.Services
         {
             return new AlumnoService();
         }
-
+        public Alumno ObtenerAlumnosPorId(int id)
+        {
+            var query = @"SELECT * FROM Alumnos WHERE Id =" + id;
+            return Connection.DbConnection.Query<Alumno>(query).FirstOrDefault();
+        }
         public List<Alumno> ObtenerAlumnosPorSocioId(int socioId)
         {
             var query = @"SELECT * FROM Alumnos WHERE SocioId =" + socioId;
