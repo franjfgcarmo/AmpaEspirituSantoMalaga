@@ -19,31 +19,21 @@ namespace Ampa.Frm
 
         private void FrmReport_Load(object sender, EventArgs e)
         {
-            var ds=Program.DbConnection.InitDataAdapter(
+            var dsTutores=Program.DbConnection.InitDataAdapter(
                 "Select Nombre, Apellidos, Telefono, Movil,Email From Tutores Where  SocioId =2 ");
+            var dsAlumnos = Program.DbConnection.InitDataAdapter(
+                "Select Nombre, Apellidos, Curso From Alumnos Where  SocioId =2 ");
             reportViewer1.ProcessingMode = ProcessingMode.Local;
 
             //reportViewer1.Reset();
             reportViewer1.LocalReport.ReportPath = @"Report\Ficha.rdlc";
             //reportViewer1.LocalReport.ReportPath = Server.MapPath("Report.rdlc");
-            ReportDataSource rds = new ReportDataSource("DataSetTutores", ds.Tables[0]);
+            ReportDataSource rdsTutores = new ReportDataSource("DataSetTutores", dsTutores.Tables[0]);
+            ReportDataSource rdsAlumnos = new ReportDataSource("DataSetAlumnos", dsAlumnos.Tables[0]);
             reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(rds);
-            //reportViewer1.DataBindings();
-            //reportViewer1.LocalReport.Refresh();
-
-            //    SqlCommand command =
-            //    new SqlCommand(sqlSalesOrder, connection);
-
-            //command.Parameters.Add(
-            //    new SqlParameter("SalesOrderNumber",
-            //    salesOrderNumber));
-
-            //var salesOrderAdapter = new Con
-            //    SqlDataAdapter(command);
-
-            //salesOrderAdapter.Fill(dsSalesOrder, "SalesOrder");
-            //    DataSet tutores
+            reportViewer1.LocalReport.DataSources.Add(rdsTutores);
+            reportViewer1.LocalReport.DataSources.Add(rdsAlumnos);
+           
             this.reportViewer1.RefreshReport();
         }
     }
