@@ -6,19 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.27658cm</Width>
+              <Width>4.01218cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.19543cm</Width>
+              <Width>4.45266cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.29892cm</Width>
+              <Width>3.42927cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.27246cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>4.6222cm</Width>
+              <Width>5.08897cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -96,7 +93,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Teléfono</Value>
+                              <Value>Teléfonos</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -106,37 +103,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox6</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox8">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Móvil</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -208,9 +174,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
@@ -245,9 +208,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
@@ -257,6 +217,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -268,7 +229,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Telefono.Value</Value>
+                              <Value>=Fields!Telefono.Value &amp; " - " &amp; Fields!Movil.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -282,46 +243,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Movil">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Movil.Value</Value>
-                              <Style>
-                                <FontSize>9pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Movil</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
@@ -356,9 +277,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
@@ -380,7 +298,6 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -395,9 +312,8 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetTutores</DataSetName>
         <Top>1.45203cm</Top>
-        <Left>0.3175cm</Left>
         <Height>1.2cm</Height>
-        <Width>16.66559cm</Width>
+        <Width>16.98308cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -422,7 +338,6 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.67564cm</Top>
-        <Left>0.3175cm</Left>
         <Height>0.6cm</Height>
         <Width>5.86021cm</Width>
         <ZIndex>1</ZIndex>
@@ -453,8 +368,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.95747cm</Top>
-        <Left>0.3175cm</Left>
+        <Top>2.99275cm</Top>
         <Height>0.6cm</Height>
         <Width>5.86021cm</Width>
         <ZIndex>2</ZIndex>
@@ -472,13 +386,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.87653cm</Width>
+              <Width>4.08441cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.87653cm</Width>
+              <Width>4.52489cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.87653cm</Width>
+              <Width>1.67507cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -708,9 +622,8 @@
         </TablixRowHierarchy>
         <DataSetName>DataSetAlumnos</DataSetName>
         <Top>3.73386cm</Top>
-        <Left>0.3175cm</Left>
         <Height>1.2cm</Height>
-        <Width>14.62959cm</Width>
+        <Width>10.28437cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>

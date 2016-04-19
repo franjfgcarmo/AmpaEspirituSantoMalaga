@@ -13,8 +13,8 @@ namespace Ampa.Services
 
         public SocioModel ObtenerSocioPorAnyoSocioId(int anyo, int socioId)
         {
-            var query =string.Format(@"SELECT * FROM CursosSocios WHERE CursoId = {0} AND SocioId = {1}",anyo,socioId);
-            var socio= Connection.DbConnection.Query<SocioModel>(query).FirstOrDefault();
+            var query = string.Format(@"SELECT * FROM CursosSocios WHERE CursoId = {0} AND SocioId = {1}", anyo, socioId);
+            var socio = Connection.DbConnection.Query<SocioModel>(query).FirstOrDefault();
             var tutorService = TutorService.GetInstance();
             if (socio == null) return null;
             var alumnoService = AlumnoService.GetInstance();

@@ -11,6 +11,7 @@ namespace Ampa.Services
         {
             return new TutorService();
         }
+
         public TutorModel ObtenerTutorById(int id)
         {
             var query = string.Format("SELECT t.* FROM " +
@@ -19,6 +20,7 @@ namespace Ampa.Services
                                       "WHERE t.Id = {0}", id);
             return Connection.DbConnection.Query<TutorModel>(query).FirstOrDefault();
         }
+
         public List<TutorModel> ObtenerTutoresPorSocioId(int anyo, int socioId)
         {
             var query = string.Format("SELECT t.* FROM " +
@@ -49,6 +51,11 @@ namespace Ampa.Services
 
         public bool Update(TutorModel tutor)
         {
+            if (tutor.EsPrincipal)
+            {
+                Connection.Execute(string.Format("Update Tutores Set EsPrincipal = false WHERE SocioId = {0}", tutor.SocioId));
+            }
+
             var query = string.Format("Update Tutores Set " +
                                       "Nombre = '{0}'," +
                                       "Apellidos ='{1}'," +
@@ -56,16 +63,17 @@ namespace Ampa.Services
                                       "Movil = '{3}'," +
                                       "Email = '{4}'," +
                                       "EsPrincipal = {5} " +
-                                      "WHERE Id = {6}", tutor.Nombre.Trim(), tutor.Apellidos.Trim(), tutor.Telefono.Trim(), tutor.Movil.Trim(),
+                                      "WHERE Id = {6}", tutor.Nombre.Trim(), tutor.Apellidos.Trim(),
+                tutor.Telefono.Trim(), tutor.Movil.Trim(),
                 tutor.Email.Trim(), tutor.EsPrincipal, tutor.Id);
             return Connection.Execute(query) > 0;
         }
 
         public bool Insert(TutorModel tutor)
         {
-            var query = string.Format("INSERT INTO Alumnos " +
+            var query = string.Format("INSERT INTO Tutores " +
                                       "(Nombre,Apellidos, Telefono, Movil, Email, EsPrincipal, SocioId)" +
-                                      "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',{6})",
+                                      "VALUES ('{0}','{1}','{2}','{3}','{4}',{5},{6})",
                 tutor.Nombre, tutor.Apellidos, tutor.Telefono, tutor.Movil, tutor.Email, tutor.EsPrincipal,
                 tutor.SocioId);
             return Connection.Execute(query) > 0;

@@ -10,6 +10,5 @@
         public string Email { get; set; }
         public int SocioId { get; set; }
         public bool EsPrincipal { get; set; }
-
     }
 }

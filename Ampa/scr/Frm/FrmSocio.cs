@@ -18,14 +18,18 @@ namespace Ampa.Frm
             _tipoEdicion = tipoEdicion;
             _socioId = socioId;
             InitializeComponent();
+            pnlImportarSocio.Visible = false;
+            pnlTutores.Location.Offset(pnlTutores.Location.X,pnlTutores.Location.Y - pnlImportarSocio.Height) ;
+            pnlAlumnos.Location.Offset(pnlAlumnos.Location.X, pnlAlumnos.Location.Y - pnlImportarSocio.Height);
+            pnlPie.Location.Offset(pnlPie.Location.X, pnlPie.Location.Y - pnlImportarSocio.Height);
+            Height = Height - pnlImportarSocio.Height;
         }
 
         private void FrmSocio_Load(object sender, EventArgs e)
         {
             dgvAlumno.DefaultCellStyle.ForeColor = Color.Black;
             grdTutor.DefaultCellStyle.ForeColor = Color.Black;
-            btnGuardarAlumno.Enabled = false;
-            btnEditarAlumno.Enabled = false;
+            btnGuardarAlumno.Enabled = false;            
             var socio = new SocioModel();
             switch (_tipoEdicion)
             {
@@ -60,6 +64,7 @@ namespace Ampa.Frm
         private void grdTutor_SelectionChanged_1(object sender, EventArgs e)
         {
             if (_suppressAutoSelection) return;
+            LimpiarCamposTutor();
             var dvg = (DataGridView)sender;
             var tutorId = 0;
             if (dvg.CurrentRow != null)
@@ -80,6 +85,11 @@ namespace Ampa.Frm
             txtMovilTutor.Text = tutor.Movil;
             txtEmailTutor.Text = tutor.Email;
             txtTutorId.Text = tutor.Id.ToString();
+            chkPrincipal.Checked = tutor.EsPrincipal;
+            CambiaEstadoCamposTutor(false);
+            btnEditarTutor.Enabled = true;
+            btnNuevoTutor.Enabled = true;
+            btnGuardarTutor.Enabled = false;
         }
         private void btnGuardarTutor_Click(object sender, EventArgs e)
         {
@@ -93,10 +103,10 @@ namespace Ampa.Frm
                     Id = tutorId,
                     Apellidos = txtApellidoTutor.Text,
                     Email = txtEmailTutor.Text,
-                    EsPrincipal = false,
+                    EsPrincipal = chkPrincipal.Checked,
                     Movil = txtMovilTutor.Text,
                     Telefono = txtTelefonoTutor.Text,
-                    SocioId = _socioId
+                    SocioId = _socioId                  
                 };
                 if (result)
                 {
@@ -107,12 +117,14 @@ namespace Ampa.Frm
                     service.Insert(tutor);
                 }
             }
-            RefrescarGridTutor(tutorId);
+            RefrescarGridTutor();
         }
 
         private void btnNuevoTutor_Click(object sender, EventArgs e)
         {
+            txtNombreTutor.Focus();
             LimpiarCamposTutor();
+            CambiaEstadoCamposTutor(true);
             btnEditarTutor.Enabled = false;
             btnNuevoTutor.Enabled = false;
             btnGuardarTutor.Enabled = true;
@@ -120,6 +132,7 @@ namespace Ampa.Frm
 
         private void btnEditarTutor_Click_1(object sender, EventArgs e)
         {
+            txtNombreTutor.Focus();
             btnEditarTutor.Enabled = false;
             btnNuevoTutor.Enabled = false;
             btnGuardarTutor.Enabled = true;
@@ -137,6 +150,7 @@ namespace Ampa.Frm
             txtTelefonoTutor.Enabled = estado;
             txtMovilTutor.Enabled = estado;
             txtEmailTutor.Enabled = estado;
+            chkPrincipal.Enabled = estado;
         }
         private void LimpiarCamposTutor()
         {
@@ -146,15 +160,16 @@ namespace Ampa.Frm
             txtMovilTutor.Text = string.Empty;
             txtEmailTutor.Text = string.Empty;
             txtTutorId.Text = string.Empty;
+            chkPrincipal.Checked = false;
         }
-        private void RefrescarGridTutor(int socioId)
+        private void RefrescarGridTutor()
         {
             List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
-                tutores = service.ObtenerTutoresPorSocioId(Program.ActualCurso.Id, socioId);
+                tutores = service.ObtenerTutoresPorSocioId(Program.ActualCurso.Id, _socioId);
             }
-            _suppressAutoSelection = true;
+                _suppressAutoSelection = true;
             grdTutor.DataSource = tutores;
             grdTutor.Refresh();
             _suppressAutoSelection = false;
@@ -178,6 +193,7 @@ namespace Ampa.Frm
         private void dgvAlumno_SelectionChanged(object sender, EventArgs e)
         {
             if (_suppressAutoSelection) return;
+            LimpiarCamposAlumno();
             var dvg = (DataGridView) sender;
             var alumnoId = 0;
             if (dvg.CurrentRow != null)
@@ -196,6 +212,10 @@ namespace Ampa.Frm
             txtApellidoAlumno.Text = alumno.Apellidos;
             txtCursoAlumno.Text = alumno.Curso;
             TxtAlumnoId.Text = alumno.Id.ToString();
+            CambiaEstadoCamposAlumno(false);
+            btnEditarAlumno.Enabled = true;
+            btnNuevoAlumno.Enabled = true;
+            btnGuardarAlumno.Enabled = false;
         }
         private void LimpiarCamposAlumno()
         {
@@ -204,19 +224,19 @@ namespace Ampa.Frm
             txtCursoAlumno.Text = string.Empty;
             TxtAlumnoId.Text = string.Empty;
         }
-        private void RefrescarGridAlumno(int socioId)
+        private void RefrescarGridAlumno()
         {
             List<AlumnoModel> alumnos;
             using (var service = AlumnoService.GetInstance())
             {
-                alumnos = service.ObtenerAlumnosPorSocioId(socioId);
+                alumnos = service.ObtenerAlumnosPorSocioId(_socioId);
             }
             _suppressAutoSelection = true;
             dgvAlumno.DataSource = alumnos;
             dgvAlumno.Refresh();
             _suppressAutoSelection = false;
             dgvAlumno.Rows[0].Selected = true;
-            dgvAlumno_SelectionChanged(grdTutor, null);
+            dgvAlumno_SelectionChanged(dgvAlumno, null);
             CambiaEstadoCamposTutor(false);
             btnEditarAlumno.Enabled = true;
             btnNuevoAlumno.Enabled = true;
@@ -225,7 +245,9 @@ namespace Ampa.Frm
 
         private void btnNuevoAlumno_Click(object sender, EventArgs e)
         {
+            txtNombreAlumno.Focus();
             LimpiarCamposAlumno();
+            CambiaEstadoCamposAlumno(true);
             btnEditarAlumno.Enabled = false;
             btnNuevoAlumno.Enabled = false;
             btnGuardarAlumno.Enabled = true;
@@ -233,7 +255,11 @@ namespace Ampa.Frm
 
         private void btnEditarAlumno_Click(object sender, EventArgs e)
         {
-            CambiaEstadoCamposAlumno(true);
+            txtNombreAlumno.Focus();
+            CambiaEstadoCamposAlumno(true); 
+            btnEditarAlumno.Enabled = false;
+            btnNuevoAlumno.Enabled = false;
+            btnGuardarAlumno.Enabled = true;
         }
 
         private void btnGuardarAlumno_Click(object sender, EventArgs e)
@@ -259,13 +285,22 @@ namespace Ampa.Frm
                     service.Insert(alumno);
                 }
             }
-            RefrescarGridAlumno(alumnoId);
+            RefrescarGridAlumno();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            var frmReport = new FrmReport();
+            var frmReport = new FrmReport(_socioId);
             frmReport.Show();
+        }
+
+        private void btnImportarSocio_Click(object sender, EventArgs e)
+        {
+            pnlImportarSocio.Visible = true;
+            pnlTutores.Location.Offset(pnlTutores.Location.X, pnlTutores.Location.Y + pnlImportarSocio.Height);
+            pnlAlumnos.Location.Offset(pnlAlumnos.Location.X, pnlAlumnos.Location.Y + pnlImportarSocio.Height);
+            pnlPie.Location.Offset(pnlPie.Location.X, pnlPie.Location.Y + pnlImportarSocio.Height);
+            Height = Height + pnlImportarSocio.Height;
         }    
     }
 }

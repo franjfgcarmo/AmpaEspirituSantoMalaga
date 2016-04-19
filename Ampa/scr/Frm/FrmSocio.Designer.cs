@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtObservaciones = new System.Windows.Forms.TextBox();
-            this.chckPagaPorBanco = new System.Windows.Forms.CheckBox();
             this.pnlAlumnos = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TxtAlumnoId = new System.Windows.Forms.TextBox();
@@ -51,6 +48,7 @@
             this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTutores = new System.Windows.Forms.GroupBox();
             this.pnlEditTutor = new System.Windows.Forms.Panel();
+            this.chkPrincipal = new System.Windows.Forms.CheckBox();
             this.txtTutorId = new System.Windows.Forms.TextBox();
             this.btnNuevoTutor = new Ampa.Control.CustomButton();
             this.btnGuardarTutor = new Ampa.Control.CustomButton();
@@ -79,11 +77,16 @@
             this.grdImportarSocios = new System.Windows.Forms.DataGridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlButton = new System.Windows.Forms.Panel();
+            this.btnImprimir = new Ampa.Control.CustomButton();
             this.btnGuardarSocio = new Ampa.Control.CustomButton();
-            this.btnNuevoSocio = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnImprimir = new Ampa.Control.CustomButton();
+            this.pnlPie = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.chckPagaPorBanco = new System.Windows.Forms.CheckBox();
+            this.customButton1 = new Ampa.Control.CustomButton();
+            this.customButton2 = new Ampa.Control.CustomButton();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -93,36 +96,8 @@
             this.pnlImportarSocio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdImportarSocios)).BeginInit();
             this.pnlButton.SuspendLayout();
+            this.pnlPie.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(166, 495);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 17);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Observaciones";
-            // 
-            // txtObservaciones
-            // 
-            this.txtObservaciones.Location = new System.Drawing.Point(282, 496);
-            this.txtObservaciones.Multiline = true;
-            this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(543, 60);
-            this.txtObservaciones.TabIndex = 12;
-            // 
-            // chckPagaPorBanco
-            // 
-            this.chckPagaPorBanco.AutoSize = true;
-            this.chckPagaPorBanco.ForeColor = System.Drawing.Color.White;
-            this.chckPagaPorBanco.Location = new System.Drawing.Point(12, 495);
-            this.chckPagaPorBanco.Name = "chckPagaPorBanco";
-            this.chckPagaPorBanco.Size = new System.Drawing.Size(144, 21);
-            this.chckPagaPorBanco.TabIndex = 11;
-            this.chckPagaPorBanco.Text = "Pagado por banco";
-            this.chckPagaPorBanco.UseVisualStyleBackColor = true;
             // 
             // pnlAlumnos
             // 
@@ -179,7 +154,7 @@
             this.btnNuevoAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevoAlumno.Name = "btnNuevoAlumno";
             this.btnNuevoAlumno.Size = new System.Drawing.Size(120, 28);
-            this.btnNuevoAlumno.TabIndex = 12;
+            this.btnNuevoAlumno.TabIndex = 3;
             this.btnNuevoAlumno.Text = "Nuevo Alumno";
             this.btnNuevoAlumno.UseVisualStyleBackColor = false;
             this.btnNuevoAlumno.Click += new System.EventHandler(this.btnNuevoAlumno_Click);
@@ -196,7 +171,7 @@
             this.btnGuardarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnGuardarAlumno.Name = "btnGuardarAlumno";
             this.btnGuardarAlumno.Size = new System.Drawing.Size(120, 28);
-            this.btnGuardarAlumno.TabIndex = 10;
+            this.btnGuardarAlumno.TabIndex = 5;
             this.btnGuardarAlumno.Text = "Guardar Alumno";
             this.btnGuardarAlumno.UseVisualStyleBackColor = false;
             this.btnGuardarAlumno.Click += new System.EventHandler(this.btnGuardarAlumno_Click);
@@ -213,7 +188,7 @@
             this.btnEditarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditarAlumno.Name = "btnEditarAlumno";
             this.btnEditarAlumno.Size = new System.Drawing.Size(120, 28);
-            this.btnEditarAlumno.TabIndex = 1;
+            this.btnEditarAlumno.TabIndex = 4;
             this.btnEditarAlumno.Text = "Editar Alumno";
             this.btnEditarAlumno.UseVisualStyleBackColor = false;
             this.btnEditarAlumno.Click += new System.EventHandler(this.btnEditarAlumno_Click);
@@ -224,7 +199,7 @@
             this.txtApellidoAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellidoAlumno.Name = "txtApellidoAlumno";
             this.txtApellidoAlumno.Size = new System.Drawing.Size(208, 23);
-            this.txtApellidoAlumno.TabIndex = 9;
+            this.txtApellidoAlumno.TabIndex = 1;
             // 
             // label6
             // 
@@ -243,7 +218,7 @@
             this.txtCursoAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.txtCursoAlumno.Name = "txtCursoAlumno";
             this.txtCursoAlumno.Size = new System.Drawing.Size(44, 23);
-            this.txtCursoAlumno.TabIndex = 7;
+            this.txtCursoAlumno.TabIndex = 2;
             // 
             // label7
             // 
@@ -262,7 +237,7 @@
             this.txtNombreAlumno.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreAlumno.Name = "txtNombreAlumno";
             this.txtNombreAlumno.Size = new System.Drawing.Size(200, 23);
-            this.txtNombreAlumno.TabIndex = 1;
+            this.txtNombreAlumno.TabIndex = 0;
             // 
             // label10
             // 
@@ -298,7 +273,7 @@
             this.dgvAlumno.RowTemplate.Height = 28;
             this.dgvAlumno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumno.Size = new System.Drawing.Size(366, 113);
-            this.dgvAlumno.TabIndex = 9;
+            this.dgvAlumno.TabIndex = 0;
             this.dgvAlumno.SelectionChanged += new System.EventHandler(this.dgvAlumno_SelectionChanged);
             // 
             // NombreAlumno
@@ -358,6 +333,7 @@
             // 
             // pnlEditTutor
             // 
+            this.pnlEditTutor.Controls.Add(this.chkPrincipal);
             this.pnlEditTutor.Controls.Add(this.txtTutorId);
             this.pnlEditTutor.Controls.Add(this.btnNuevoTutor);
             this.pnlEditTutor.Controls.Add(this.btnGuardarTutor);
@@ -378,6 +354,16 @@
             this.pnlEditTutor.Name = "pnlEditTutor";
             this.pnlEditTutor.Size = new System.Drawing.Size(832, 75);
             this.pnlEditTutor.TabIndex = 10;
+            // 
+            // chkPrincipal
+            // 
+            this.chkPrincipal.AutoSize = true;
+            this.chkPrincipal.Location = new System.Drawing.Point(6, 47);
+            this.chkPrincipal.Name = "chkPrincipal";
+            this.chkPrincipal.Size = new System.Drawing.Size(119, 21);
+            this.chkPrincipal.TabIndex = 13;
+            this.chkPrincipal.Text = "Tutor Principal";
+            this.chkPrincipal.UseVisualStyleBackColor = true;
             // 
             // txtTutorId
             // 
@@ -400,7 +386,7 @@
             this.btnNuevoTutor.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevoTutor.Name = "btnNuevoTutor";
             this.btnNuevoTutor.Size = new System.Drawing.Size(128, 28);
-            this.btnNuevoTutor.TabIndex = 11;
+            this.btnNuevoTutor.TabIndex = 5;
             this.btnNuevoTutor.Text = "Nuevo Tutor";
             this.btnNuevoTutor.UseVisualStyleBackColor = false;
             this.btnNuevoTutor.Click += new System.EventHandler(this.btnNuevoTutor_Click);
@@ -417,7 +403,7 @@
             this.btnGuardarTutor.Margin = new System.Windows.Forms.Padding(0);
             this.btnGuardarTutor.Name = "btnGuardarTutor";
             this.btnGuardarTutor.Size = new System.Drawing.Size(128, 28);
-            this.btnGuardarTutor.TabIndex = 10;
+            this.btnGuardarTutor.TabIndex = 7;
             this.btnGuardarTutor.Text = "Guardar Tutor";
             this.btnGuardarTutor.UseVisualStyleBackColor = false;
             this.btnGuardarTutor.Click += new System.EventHandler(this.btnGuardarTutor_Click);
@@ -434,7 +420,7 @@
             this.btnEditarTutor.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditarTutor.Name = "btnEditarTutor";
             this.btnEditarTutor.Size = new System.Drawing.Size(129, 28);
-            this.btnEditarTutor.TabIndex = 1;
+            this.btnEditarTutor.TabIndex = 6;
             this.btnEditarTutor.Text = "Editar Tutor";
             this.btnEditarTutor.UseVisualStyleBackColor = false;
             this.btnEditarTutor.Click += new System.EventHandler(this.btnEditarTutor_Click_1);
@@ -445,7 +431,7 @@
             this.txtApellidoTutor.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellidoTutor.Name = "txtApellidoTutor";
             this.txtApellidoTutor.Size = new System.Drawing.Size(216, 23);
-            this.txtApellidoTutor.TabIndex = 9;
+            this.txtApellidoTutor.TabIndex = 1;
             // 
             // lblApellido
             // 
@@ -463,7 +449,7 @@
             this.txtTelefonoTutor.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefonoTutor.Name = "txtTelefonoTutor";
             this.txtTelefonoTutor.Size = new System.Drawing.Size(96, 23);
-            this.txtTelefonoTutor.TabIndex = 7;
+            this.txtTelefonoTutor.TabIndex = 2;
             // 
             // label5
             // 
@@ -481,7 +467,7 @@
             this.txtMovilTutor.Margin = new System.Windows.Forms.Padding(2);
             this.txtMovilTutor.Name = "txtMovilTutor";
             this.txtMovilTutor.Size = new System.Drawing.Size(96, 23);
-            this.txtMovilTutor.TabIndex = 5;
+            this.txtMovilTutor.TabIndex = 3;
             // 
             // label4
             // 
@@ -499,7 +485,7 @@
             this.txtEmailTutor.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailTutor.Name = "txtEmailTutor";
             this.txtEmailTutor.Size = new System.Drawing.Size(195, 23);
-            this.txtEmailTutor.TabIndex = 3;
+            this.txtEmailTutor.TabIndex = 4;
             // 
             // label3
             // 
@@ -517,7 +503,7 @@
             this.txtNombreTutor.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreTutor.Name = "txtNombreTutor";
             this.txtNombreTutor.Size = new System.Drawing.Size(217, 23);
-            this.txtNombreTutor.TabIndex = 1;
+            this.txtNombreTutor.TabIndex = 0;
             // 
             // label2
             // 
@@ -555,7 +541,7 @@
             this.grdTutor.RowTemplate.Height = 28;
             this.grdTutor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdTutor.Size = new System.Drawing.Size(832, 105);
-            this.grdTutor.TabIndex = 9;
+            this.grdTutor.TabIndex = 0;
             this.grdTutor.SelectionChanged += new System.EventHandler(this.grdTutor_SelectionChanged_1);
             // 
             // Id
@@ -661,7 +647,7 @@
             this.grdImportarSocios.RowTemplate.Height = 28;
             this.grdImportarSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdImportarSocios.Size = new System.Drawing.Size(836, 95);
-            this.grdImportarSocios.TabIndex = 7;
+            this.grdImportarSocios.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -669,13 +655,12 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(309, 23);
-            this.textBox2.TabIndex = 6;
+            this.textBox2.TabIndex = 0;
             // 
             // pnlButton
             // 
             this.pnlButton.Controls.Add(this.btnImprimir);
             this.pnlButton.Controls.Add(this.btnGuardarSocio);
-            this.pnlButton.Controls.Add(this.btnNuevoSocio);
             this.pnlButton.Controls.Add(this.btnImportarSocio);
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
@@ -683,61 +668,6 @@
             this.pnlButton.Name = "pnlButton";
             this.pnlButton.Size = new System.Drawing.Size(836, 31);
             this.pnlButton.TabIndex = 5;
-            // 
-            // btnGuardarSocio
-            // 
-            this.btnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.btnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
-            this.btnGuardarSocio.FlatAppearance.BorderSize = 2;
-            this.btnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarSocio.Location = new System.Drawing.Point(259, 0);
-            this.btnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.btnGuardarSocio.Name = "btnGuardarSocio";
-            this.btnGuardarSocio.Size = new System.Drawing.Size(128, 28);
-            this.btnGuardarSocio.TabIndex = 2;
-            this.btnGuardarSocio.Text = "Guardar Socio";
-            this.btnGuardarSocio.UseVisualStyleBackColor = false;
-            // 
-            // btnNuevoSocio
-            // 
-            this.btnNuevoSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.btnNuevoSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
-            this.btnNuevoSocio.FlatAppearance.BorderSize = 2;
-            this.btnNuevoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoSocio.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoSocio.Location = new System.Drawing.Point(130, 0);
-            this.btnNuevoSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNuevoSocio.Name = "btnNuevoSocio";
-            this.btnNuevoSocio.Size = new System.Drawing.Size(128, 28);
-            this.btnNuevoSocio.TabIndex = 1;
-            this.btnNuevoSocio.Text = "Nuevo Socio";
-            this.btnNuevoSocio.UseVisualStyleBackColor = false;
-            // 
-            // btnImportarSocio
-            // 
-            this.btnImportarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.btnImportarSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
-            this.btnImportarSocio.FlatAppearance.BorderSize = 2;
-            this.btnImportarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnImportarSocio.Location = new System.Drawing.Point(0, 0);
-            this.btnImportarSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.btnImportarSocio.Name = "btnImportarSocio";
-            this.btnImportarSocio.Size = new System.Drawing.Size(128, 28);
-            this.btnImportarSocio.TabIndex = 1;
-            this.btnImportarSocio.Text = "Importar Socio";
-            this.btnImportarSocio.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(156, 749);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 4;
             // 
             // btnImprimir
             // 
@@ -756,13 +686,125 @@
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // btnGuardarSocio
+            // 
+            this.btnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
+            this.btnGuardarSocio.FlatAppearance.BorderSize = 2;
+            this.btnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarSocio.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarSocio.Location = new System.Drawing.Point(259, 0);
+            this.btnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGuardarSocio.Name = "btnGuardarSocio";
+            this.btnGuardarSocio.Size = new System.Drawing.Size(128, 28);
+            this.btnGuardarSocio.TabIndex = 2;
+            this.btnGuardarSocio.Text = "Guardar Socio";
+            this.btnGuardarSocio.UseVisualStyleBackColor = false;
+            // 
+            // btnImportarSocio
+            // 
+            this.btnImportarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnImportarSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
+            this.btnImportarSocio.FlatAppearance.BorderSize = 2;
+            this.btnImportarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportarSocio.ForeColor = System.Drawing.Color.White;
+            this.btnImportarSocio.Location = new System.Drawing.Point(0, 0);
+            this.btnImportarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImportarSocio.Name = "btnImportarSocio";
+            this.btnImportarSocio.Size = new System.Drawing.Size(128, 28);
+            this.btnImportarSocio.TabIndex = 0;
+            this.btnImportarSocio.Text = "Importar Socio";
+            this.btnImportarSocio.UseVisualStyleBackColor = false;
+            this.btnImportarSocio.Click += new System.EventHandler(this.btnImportarSocio_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(156, 749);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 4;
+            // 
+            // pnlPie
+            // 
+            this.pnlPie.Controls.Add(this.customButton2);
+            this.pnlPie.Controls.Add(this.customButton1);
+            this.pnlPie.Controls.Add(this.label8);
+            this.pnlPie.Controls.Add(this.txtObservaciones);
+            this.pnlPie.Controls.Add(this.chckPagaPorBanco);
+            this.pnlPie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPie.Location = new System.Drawing.Point(0, 495);
+            this.pnlPie.Name = "pnlPie";
+            this.pnlPie.Size = new System.Drawing.Size(836, 100);
+            this.pnlPie.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(166, 1);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Observaciones";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(282, 2);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(543, 60);
+            this.txtObservaciones.TabIndex = 15;
+            // 
+            // chckPagaPorBanco
+            // 
+            this.chckPagaPorBanco.AutoSize = true;
+            this.chckPagaPorBanco.ForeColor = System.Drawing.Color.White;
+            this.chckPagaPorBanco.Location = new System.Drawing.Point(12, 1);
+            this.chckPagaPorBanco.Name = "chckPagaPorBanco";
+            this.chckPagaPorBanco.Size = new System.Drawing.Size(144, 21);
+            this.chckPagaPorBanco.TabIndex = 14;
+            this.chckPagaPorBanco.Text = "Pagado por banco";
+            this.chckPagaPorBanco.UseVisualStyleBackColor = true;
+            // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.customButton1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.customButton1.FlatAppearance.BorderSize = 2;
+            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customButton1.ForeColor = System.Drawing.Color.White;
+            this.customButton1.Location = new System.Drawing.Point(7, 27);
+            this.customButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(120, 28);
+            this.customButton1.TabIndex = 17;
+            this.customButton1.Text = "Editar Alumno";
+            this.customButton1.UseVisualStyleBackColor = false;
+            // 
+            // customButton2
+            // 
+            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.customButton2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.customButton2.FlatAppearance.BorderSize = 2;
+            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customButton2.ForeColor = System.Drawing.Color.White;
+            this.customButton2.Location = new System.Drawing.Point(138, 27);
+            this.customButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.customButton2.Name = "customButton2";
+            this.customButton2.Size = new System.Drawing.Size(120, 28);
+            this.customButton2.TabIndex = 18;
+            this.customButton2.Text = "Guardar Alumno";
+            this.customButton2.UseVisualStyleBackColor = false;
+            // 
             // FrmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(836, 559);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtObservaciones);
-            this.Controls.Add(this.chckPagaPorBanco);
+            this.Controls.Add(this.pnlPie);
             this.Controls.Add(this.pnlAlumnos);
             this.Controls.Add(this.pnlTutores);
             this.Controls.Add(this.pnlImportarSocio);
@@ -782,6 +824,8 @@
             this.pnlImportarSocio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdImportarSocios)).EndInit();
             this.pnlButton.ResumeLayout(false);
+            this.pnlPie.ResumeLayout(false);
+            this.pnlPie.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,7 +834,6 @@
         #endregion
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel pnlButton;
-        private Control.CustomButton btnNuevoSocio;
         private Control.CustomButton btnImportarSocio;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel pnlImportarSocio;
@@ -821,9 +864,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvAlumno;
         private Control.CustomButton btnNuevoTutor;
-        private System.Windows.Forms.CheckBox chckPagaPorBanco;
-        private System.Windows.Forms.TextBox txtObservaciones;
-        private System.Windows.Forms.Label label8;
         private Control.CustomButton btnGuardarSocio;
         private Control.CustomButton btnNuevoAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
@@ -844,5 +884,12 @@
         private System.Windows.Forms.TextBox txtTutorId;
         private System.Windows.Forms.TextBox TxtAlumnoId;
         private Control.CustomButton btnImprimir;
+        private System.Windows.Forms.CheckBox chkPrincipal;
+        private System.Windows.Forms.Panel pnlPie;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtObservaciones;
+        private Control.CustomButton customButton2;
+        private Control.CustomButton customButton1;
+        private System.Windows.Forms.CheckBox chckPagaPorBanco;
     }
 }

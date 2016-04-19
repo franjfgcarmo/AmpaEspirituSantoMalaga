@@ -22,7 +22,7 @@ namespace Ampa.Frm
         }
 
         private void FrmSocios_Load(object sender, EventArgs e)
-        {
+        {          
             List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
@@ -34,6 +34,13 @@ namespace Ampa.Frm
             _suppressAutoSelection = false;
             dgvSocios.Rows[0].Selected = true;
             dgvSocios_SelectionChanged(dgvSocios, null);
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            dgvSocios.Columns.Add(btn);
+            btn.HeaderText = "Editar";
+            btn.Text = "Editar";
+            btn.Name = "btn";
+            btn.Width = 50;
+            btn.UseColumnTextForButtonValue = true;
         }
 
         private void dgvSocios_SelectionChanged(object sender, EventArgs e)
@@ -92,6 +99,14 @@ namespace Ampa.Frm
             if (socioId == 0) return;
             var frm = new FrmSocio(TipoEdicion.Edicion,socioId);
             frm.Show();
+        }
+
+        private void dgvSocios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 8)
+            {
+                dgvSocios_MouseDoubleClick(dgvSocios, null);                
+            }
         }
     }
 }
