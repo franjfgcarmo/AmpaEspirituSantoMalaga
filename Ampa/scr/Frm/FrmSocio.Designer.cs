@@ -33,6 +33,7 @@
             this.chckPagaPorBanco = new System.Windows.Forms.CheckBox();
             this.pnlAlumnos = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TxtAlumnoId = new System.Windows.Forms.TextBox();
             this.btnNuevoAlumno = new Ampa.Control.CustomButton();
             this.btnGuardarAlumno = new Ampa.Control.CustomButton();
             this.btnEditarAlumno = new Ampa.Control.CustomButton();
@@ -50,6 +51,7 @@
             this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTutores = new System.Windows.Forms.GroupBox();
             this.pnlEditTutor = new System.Windows.Forms.Panel();
+            this.txtTutorId = new System.Windows.Forms.TextBox();
             this.btnNuevoTutor = new Ampa.Control.CustomButton();
             this.btnGuardarTutor = new Ampa.Control.CustomButton();
             this.btnEditarTutor = new Ampa.Control.CustomButton();
@@ -81,8 +83,7 @@
             this.btnNuevoSocio = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtTutorId = new System.Windows.Forms.TextBox();
-            this.TxtAlumnoId = new System.Windows.Forms.TextBox();
+            this.btnImprimir = new Ampa.Control.CustomButton();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -137,7 +138,6 @@
             this.pnlAlumnos.TabIndex = 10;
             this.pnlAlumnos.TabStop = false;
             this.pnlAlumnos.Text = "Alumnos";
-            this.pnlAlumnos.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel1
             // 
@@ -158,6 +158,15 @@
             this.panel1.Size = new System.Drawing.Size(466, 113);
             this.panel1.TabIndex = 10;
             // 
+            // TxtAlumnoId
+            // 
+            this.TxtAlumnoId.Location = new System.Drawing.Point(414, 63);
+            this.TxtAlumnoId.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtAlumnoId.Name = "TxtAlumnoId";
+            this.TxtAlumnoId.Size = new System.Drawing.Size(44, 23);
+            this.TxtAlumnoId.TabIndex = 13;
+            this.TxtAlumnoId.Visible = false;
+            // 
             // btnNuevoAlumno
             // 
             this.btnNuevoAlumno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
@@ -173,6 +182,7 @@
             this.btnNuevoAlumno.TabIndex = 12;
             this.btnNuevoAlumno.Text = "Nuevo Alumno";
             this.btnNuevoAlumno.UseVisualStyleBackColor = false;
+            this.btnNuevoAlumno.Click += new System.EventHandler(this.btnNuevoAlumno_Click);
             // 
             // btnGuardarAlumno
             // 
@@ -189,6 +199,7 @@
             this.btnGuardarAlumno.TabIndex = 10;
             this.btnGuardarAlumno.Text = "Guardar Alumno";
             this.btnGuardarAlumno.UseVisualStyleBackColor = false;
+            this.btnGuardarAlumno.Click += new System.EventHandler(this.btnGuardarAlumno_Click);
             // 
             // btnEditarAlumno
             // 
@@ -205,6 +216,7 @@
             this.btnEditarAlumno.TabIndex = 1;
             this.btnEditarAlumno.Text = "Editar Alumno";
             this.btnEditarAlumno.UseVisualStyleBackColor = false;
+            this.btnEditarAlumno.Click += new System.EventHandler(this.btnEditarAlumno_Click);
             // 
             // txtApellidoAlumno
             // 
@@ -232,7 +244,6 @@
             this.txtCursoAlumno.Name = "txtCursoAlumno";
             this.txtCursoAlumno.Size = new System.Drawing.Size(44, 23);
             this.txtCursoAlumno.TabIndex = 7;
-            this.txtCursoAlumno.TextChanged += new System.EventHandler(this.txtCursoAlumno_TextChanged);
             // 
             // label7
             // 
@@ -244,7 +255,6 @@
             this.label7.Size = new System.Drawing.Size(45, 17);
             this.label7.TabIndex = 6;
             this.label7.Text = "Curso";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtNombreAlumno
             // 
@@ -368,6 +378,15 @@
             this.pnlEditTutor.Name = "pnlEditTutor";
             this.pnlEditTutor.Size = new System.Drawing.Size(832, 75);
             this.pnlEditTutor.TabIndex = 10;
+            // 
+            // txtTutorId
+            // 
+            this.txtTutorId.Location = new System.Drawing.Point(733, 45);
+            this.txtTutorId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTutorId.Name = "txtTutorId";
+            this.txtTutorId.Size = new System.Drawing.Size(58, 23);
+            this.txtTutorId.TabIndex = 12;
+            this.txtTutorId.Visible = false;
             // 
             // btnNuevoTutor
             // 
@@ -643,7 +662,6 @@
             this.grdImportarSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdImportarSocios.Size = new System.Drawing.Size(836, 95);
             this.grdImportarSocios.TabIndex = 7;
-            this.grdImportarSocios.DoubleClick += new System.EventHandler(this.grdSocios_DoubleClick);
             // 
             // textBox2
             // 
@@ -655,6 +673,7 @@
             // 
             // pnlButton
             // 
+            this.pnlButton.Controls.Add(this.btnImprimir);
             this.pnlButton.Controls.Add(this.btnGuardarSocio);
             this.pnlButton.Controls.Add(this.btnNuevoSocio);
             this.pnlButton.Controls.Add(this.btnImportarSocio);
@@ -720,23 +739,22 @@
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 4;
             // 
-            // txtTutorId
+            // btnImprimir
             // 
-            this.txtTutorId.Location = new System.Drawing.Point(733, 45);
-            this.txtTutorId.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTutorId.Name = "txtTutorId";
-            this.txtTutorId.Size = new System.Drawing.Size(58, 23);
-            this.txtTutorId.TabIndex = 12;
-            this.txtTutorId.Visible = false;
-            // 
-            // TxtAlumnoId
-            // 
-            this.TxtAlumnoId.Location = new System.Drawing.Point(414, 63);
-            this.TxtAlumnoId.Margin = new System.Windows.Forms.Padding(2);
-            this.TxtAlumnoId.Name = "TxtAlumnoId";
-            this.TxtAlumnoId.Size = new System.Drawing.Size(44, 23);
-            this.TxtAlumnoId.TabIndex = 13;
-            this.TxtAlumnoId.Visible = false;
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnImprimir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
+            this.btnImprimir.FlatAppearance.BorderSize = 2;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Location = new System.Drawing.Point(388, 0);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(128, 28);
+            this.btnImprimir.TabIndex = 3;
+            this.btnImprimir.Text = "Imprimir Socio";
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // FrmSocio
             // 
@@ -825,5 +843,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioId;
         private System.Windows.Forms.TextBox txtTutorId;
         private System.Windows.Forms.TextBox TxtAlumnoId;
+        private Control.CustomButton btnImprimir;
     }
 }

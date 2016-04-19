@@ -9,7 +9,7 @@ namespace Ampa
     internal static class Program
     {
         public static Connection DbConnection = new Connection();
-        public static Curso ActualCurso;
+        public static CursoModel ActualCurso;
         /// <summary>
         ///     The main entry point for the application.
         /// </summary>

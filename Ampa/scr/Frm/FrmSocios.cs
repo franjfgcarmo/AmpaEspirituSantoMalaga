@@ -23,7 +23,7 @@ namespace Ampa.Frm
 
         private void FrmSocios_Load(object sender, EventArgs e)
         {
-            List<Tutor> tutores;
+            List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
                 tutores = service.ObtenerTutoresPrincipales(Program.ActualCurso.Id);
@@ -47,7 +47,7 @@ namespace Ampa.Frm
                 socioId = int.Parse(row.Cells["SocioId"].Value.ToString());
             }
             if (socioId == 0) return;
-            List<Alumno> alumnos;
+            List<AlumnoModel> alumnos;
             using (var service = AlumnoService.GetInstance())
             {
                 alumnos = service.ObtenerAlumnosPorSocioId(socioId);
@@ -60,7 +60,7 @@ namespace Ampa.Frm
         {
             var txt = ((TextBox) sender).Text;
             if (string.IsNullOrWhiteSpace(txt)) return;
-            List<Tutor> tutores;
+            List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
                 tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), Program.ActualCurso.Id);

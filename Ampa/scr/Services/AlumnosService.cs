@@ -11,36 +11,36 @@ namespace Ampa.Services
         {
             return new AlumnoService();
         }
-        public Alumno ObtenerAlumnosPorId(int id)
+        public AlumnoModel ObtenerAlumnosPorId(int id)
         {
             var query = @"SELECT * FROM Alumnos WHERE Id =" + id;
-            return Connection.DbConnection.Query<Alumno>(query).FirstOrDefault();
+            return Connection.DbConnection.Query<AlumnoModel>(query).FirstOrDefault();
         }
-        public List<Alumno> ObtenerAlumnosPorSocioId(int socioId)
+        public List<AlumnoModel> ObtenerAlumnosPorSocioId(int socioId)
         {
             var query = @"SELECT * FROM Alumnos WHERE SocioId =" + socioId;
-            return Connection.DbConnection.Query<Alumno>(query).ToList();
+            return Connection.DbConnection.Query<AlumnoModel>(query).ToList();
         }
 
-        public bool Update(Alumno alumno)
+        public bool Update(AlumnoModel alumno)
         {
             var query = string.Format("Update Alumnos Set " +
                                       "Nombre = '{0}'," +
-                                      "Apellidos ='{1},'" +
+                                      "Apellidos ='{1}'," +
                                       "Curso = '{2}'" +
                                       "WHERE Id = {3}", alumno.Nombre, alumno.Apellidos, alumno.Curso, alumno.Id);
             return Connection.Execute(query) > 0;
         }
 
-        public bool Insert(Alumno alumno)
+        public bool Insert(AlumnoModel alumno)
         {
             var query = string.Format("INSERT INTO Alumnos (Nombre,Apellidos, Curso, SocioId)" +
-                                      "VALUES ({0},{1},{2},{3})", alumno.Nombre, alumno.Apellidos, alumno.Curso,
+                                      "VALUES ('{0}','{1}','{2}',{3})", alumno.Nombre, alumno.Apellidos, alumno.Curso,
                 alumno.SocioId);
             return Connection.Execute(query) > 0;
         }
 
-        public bool Insert(List<Alumno> alumnos)
+        public bool Insert(List<AlumnoModel> alumnos)
         {
             foreach (var alumno in alumnos)
             {

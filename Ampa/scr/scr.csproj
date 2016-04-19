@@ -74,12 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modelo\Alumnos.cs" />
-    <Compile Include="Modelo\Curso.cs" />
-    <Compile Include="Modelo\Socio.cs" />
+    <Compile Include="Frm\FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AlumnosModel.cs" />
+    <Compile Include="Modelo\CursoModel.cs" />
+    <Compile Include="Modelo\SocioModel.cs" />
     <Compile Include="Modelo\TipoEdicion.cs" />
-    <Compile Include="Modelo\Tutor.cs" />
-    <Compile Include="Modelo\Usuarios.cs" />
+    <Compile Include="Modelo\TutorModel.cs" />
+    <Compile Include="Modelo\UsuarioModel.cs" />
     <Compile Include="ConnectionProvider\Connection.cs" />
     <Compile Include="Control\CustomButton.cs">
       <SubType>Component</SubType>
@@ -92,11 +98,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmAcceso.cs">
       <SubType>Form</SubType>
@@ -134,6 +135,9 @@
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmSocio.resx">
       <DependentUpon>FrmSocio.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,7 +157,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\Ficha.rdlc" />
+    <EmbeddedResource Include="Report\Ficha.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Entities\AmpaDataSet.xsc">
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
     </None>
@@ -164,17 +170,6 @@
     </EmbeddedResource>
     <None Include="Entities\AmpaDataSet.xss">
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Entities\DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="Entities\DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Entities\DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

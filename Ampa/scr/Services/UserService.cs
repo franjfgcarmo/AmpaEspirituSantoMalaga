@@ -15,7 +15,7 @@ namespace Ampa.Services
         {
             var query = string.Format("Select * From Usuarios WHERE Nombre = '{0}' And [Password] = '{1}'", nombre,
                 contrasena);
-            var usuario = Connection.DbConnection.Query<Usuarios>(query).FirstOrDefault();
+            var usuario = Connection.DbConnection.Query<UsuarioModel>(query).FirstOrDefault();
             return usuario != null;
         }
     }

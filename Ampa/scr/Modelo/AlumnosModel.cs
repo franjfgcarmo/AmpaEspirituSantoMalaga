@@ -1,6 +1,6 @@
 ﻿namespace Ampa.Modelo
 {
-    public class Alumno
+    public class AlumnoModel
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

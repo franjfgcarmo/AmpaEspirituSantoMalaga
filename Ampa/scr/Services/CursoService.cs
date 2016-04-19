@@ -12,10 +12,10 @@ namespace Ampa.Services
             return new CursoService();
         }
 
-        public Curso ObtenerCursoAcademico()
+        public CursoModel ObtenerCursoAcademico()
         {
             var query = @"SELECT Max(Id) as Id,Descripcion FROM Cursos GROUP BY Id,Descripcion";
-            return Connection.DbConnection.Query<Curso>(query).FirstOrDefault();
+            return Connection.DbConnection.Query<CursoModel>(query).FirstOrDefault();
         }
 
     }
