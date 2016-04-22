@@ -10,6 +10,8 @@ namespace Ampa.Frm
 {
     public partial class FrmSocio : FrmBase
     {
+        //todo:Deshabilitar el botón de imprimir cuando es un usuario nuevo.
+        //Cuando se importe el usuario, llamar al método load, en modo edición e iniciar el usuarioId
         public int? BaseSocioId { get;set; }
         private readonly TipoEdicion _tipoEdicion;
         private bool _suppressAutoSelection;
@@ -126,7 +128,27 @@ namespace Ampa.Frm
 
         private void grdImportarSocios_SelectionChanged(object sender, EventArgs e)
         {
+            if (_suppressAutoSelection) return;
+              var dvg = (DataGridView)sender;
+            var socioId = 0;
+            var cursoId = 0;
+            if (dvg.CurrentRow != null)
+            {
+                var row = dvg.CurrentRow;
+                socioId = int.Parse(row.Cells["SocioIdTutorAImportar"].Value.ToString());
+                cursoId = int.Parse(row.Cells["CursoIdTutorAImportar"].Value.ToString());
+            }
+            if (socioId == 0||cursoId==0) return;
             
+            
+            bool result;
+            using (var socioService = SocioService.GetInstance())
+            {
+                result = socioService.ImportarSocio(BaseSocioId.Value, _cursoId,socioId,cursoId);
+            }
+            if(result)
+            MessageBox.Show(@"Socio importado correctamente", @"Información", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
         private void CambiaEstadoCamposSocios(bool estado)
         {

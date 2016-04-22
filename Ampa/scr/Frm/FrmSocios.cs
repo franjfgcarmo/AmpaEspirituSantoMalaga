@@ -10,10 +10,10 @@ namespace Ampa.Frm
     public partial class FrmSocios : FrmBase
     {
         //todo: mostrar un combo con los cursos académicos.
-        //todo: controlar que no se puedan meter botones eidtar eternamente
+        //todo: corregir error cuando se importa un usuario y no exite todaví ninguno. 
         private bool _suppressAutoSelection;
         int _countForm = 0;
-        private readonly int  _cursoId= Program.ActualCurso.Id ;
+        private int  _cursoId= Program.ActualCurso.Id ;
         public FrmSocios()
         {
             InitializeComponent();
@@ -121,6 +121,7 @@ namespace Ampa.Frm
                 if (cursoServicio.NuevoCurso())
                 {
                     Program.ActualCurso = cursoServicio.ObtenerCursoAcademico();
+                    _cursoId = Program.ActualCurso.Id;
                     dgvSocios.DataSource = null;
                     FrmSocios_Load(null, null);
                 }

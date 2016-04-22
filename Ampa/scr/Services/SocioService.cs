@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 using Ampa.Modelo;
 using Dapper;
 
@@ -37,9 +38,7 @@ namespace Ampa.Services
 
         public int InsertSocioCurso(CursosSociosModel cursoSocios)
         {
-            var querySocioId = string.Format(@"SELECT  IIf(IsNull(MAX(SocioId)), 0, Max(SocioId)) From CursosSocios Where CursoId={0}", cursoSocios.CursoId);
-
-            var socioId = Connection.DbConnection.Query<int>(querySocioId).FirstOrDefault()+1;
+            var socioId = GetMaximoSocio(cursoSocios.CursoId);
 
             var query = string.Format("INSERT INTO CursosSocios (Observaciones, PagoPorBanco,SocioId,CursoId) " +
                                       "VALUES('{0}',{1},{2},{3})", cursoSocios.Observaciones,
@@ -53,9 +52,70 @@ namespace Ampa.Services
             throw new Exception("Ha ocurrido un error al intentar obtener el socioId");
         }
 
-        public bool ImportarSocio(int socioId, int cursoId)
+        public bool ImportarSocio(int actualSocioId,int actualCursoId, int anteriorSocioId, int anteriorCursoId)
         {
+         
+          //  var nuevoSocioId = GetMaximoSocio(actualCursoId);
+            var querySocio = string.Format("Select {0} AS cursoId,{1} AS SocioId,Observaciones,PagoPorBanco FROM CursosSocios " +
+                                           "WHERE SocioId = {2} AND cursoId = {3}", actualCursoId, actualSocioId, anteriorSocioId,
+                anteriorCursoId);
+
+            var socio = Connection.DbConnection.Query<CursosSociosModel>(querySocio).FirstOrDefault();
+            
+            var queryTutores = string.Format("INSERT INTO Tutores " +
+                                           "SELECT Nombre, Apellidos, Telefono, Movil, Email, {0} AS SocioId,EsPrincipal,{1} AS CursoId FROM Tutores " +
+                                           "WHERE  SocioId = {2} AND CursoId = {3}", actualSocioId, actualCursoId, anteriorSocioId,
+                anteriorCursoId);
+            var queryAlumnos = string.Format("INSERT INTO Alumnos " +
+                                             "SELECT Nombre, Apellidos, Curso, {0} AS SocioId, {1} AS CursoId FROM Alumnos " +
+                                             "WHERE  SocioId = {2} AND cursoId = {3}", actualSocioId, actualCursoId,
+                anteriorSocioId,
+                anteriorCursoId);
+            try
+            {
+                UpdateSocioCurso(socio);
+                try
+                {
+                    Connection.Execute(queryTutores);
+
+                    try
+                    {
+                        Connection.Execute(queryAlumnos);
+                    }
+                    catch (Exception ex)
+                    {
+                        var queryBorradoSocio = string.Format("DELETE * FROM " +
+                                                         "Alumnos WHERE SocioId = {0} AND cursoId = {1}",
+                       actualSocioId, actualCursoId);
+                        Connection.Execute(queryBorradoSocio);
+                        MessageBox.Show(ex.Message); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var queryBorradoAlumno = string.Format("DELETE * FROM " +
+                                                         "CursosSocios WHERE SocioId = {0} AND cursoId = {1}",
+                       actualSocioId, actualCursoId);
+                    Connection.Execute(queryBorradoAlumno);
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
             return true;
+        }
+
+        private int GetMaximoSocio(int cursoId)
+        {
+            var querySocioId = string.Format(@"SELECT  IIf(IsNull(MAX(SocioId)), 0, Max(SocioId)) From CursosSocios Where CursoId={0}", cursoId);
+
+            var socioId = Connection.DbConnection.Query<int>(querySocioId).FirstOrDefault() + 1;
+
+            return socioId;
         }
     }
 }

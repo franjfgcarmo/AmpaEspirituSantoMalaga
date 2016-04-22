@@ -86,6 +86,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.chkPagaPorBanco = new System.Windows.Forms.CheckBox();
+            this.SocioIdTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefonoTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MovilTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPrincipalTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CursoIdTutorAImportar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -635,6 +644,16 @@
             this.grdImportarSocios.AllowUserToDeleteRows = false;
             this.grdImportarSocios.AllowUserToResizeRows = false;
             this.grdImportarSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdImportarSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SocioIdTutorAImportar,
+            this.NombreTutorAImportar,
+            this.ApellidoTutorAImportar,
+            this.TelefonoTutorAImportar,
+            this.MovilTutorAImportar,
+            this.EmailTutorAImportar,
+            this.EsPrincipalTutorAImportar,
+            this.IdTutorAImportar,
+            this.CursoIdTutorAImportar});
             this.grdImportarSocios.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grdImportarSocios.GridColor = System.Drawing.Color.CornflowerBlue;
             this.grdImportarSocios.Location = new System.Drawing.Point(0, 36);
@@ -786,6 +805,71 @@
             this.chkPagaPorBanco.Text = "Pagado por banco";
             this.chkPagaPorBanco.UseVisualStyleBackColor = true;
             // 
+            // SocioIdTutorAImportar
+            // 
+            this.SocioIdTutorAImportar.DataPropertyName = "SocioId";
+            this.SocioIdTutorAImportar.HeaderText = "Socio";
+            this.SocioIdTutorAImportar.Name = "SocioIdTutorAImportar";
+            this.SocioIdTutorAImportar.ReadOnly = true;
+            // 
+            // NombreTutorAImportar
+            // 
+            this.NombreTutorAImportar.DataPropertyName = "Nombre";
+            this.NombreTutorAImportar.HeaderText = "Nombre";
+            this.NombreTutorAImportar.Name = "NombreTutorAImportar";
+            this.NombreTutorAImportar.ReadOnly = true;
+            // 
+            // ApellidoTutorAImportar
+            // 
+            this.ApellidoTutorAImportar.DataPropertyName = "Apellidos";
+            this.ApellidoTutorAImportar.HeaderText = "Apellidos";
+            this.ApellidoTutorAImportar.Name = "ApellidoTutorAImportar";
+            this.ApellidoTutorAImportar.ReadOnly = true;
+            // 
+            // TelefonoTutorAImportar
+            // 
+            this.TelefonoTutorAImportar.DataPropertyName = "Telefono";
+            this.TelefonoTutorAImportar.HeaderText = "Teléfono";
+            this.TelefonoTutorAImportar.Name = "TelefonoTutorAImportar";
+            this.TelefonoTutorAImportar.ReadOnly = true;
+            // 
+            // MovilTutorAImportar
+            // 
+            this.MovilTutorAImportar.DataPropertyName = "Movil";
+            this.MovilTutorAImportar.HeaderText = "Móvil";
+            this.MovilTutorAImportar.Name = "MovilTutorAImportar";
+            this.MovilTutorAImportar.ReadOnly = true;
+            // 
+            // EmailTutorAImportar
+            // 
+            this.EmailTutorAImportar.DataPropertyName = "Email";
+            this.EmailTutorAImportar.HeaderText = "Email";
+            this.EmailTutorAImportar.Name = "EmailTutorAImportar";
+            this.EmailTutorAImportar.ReadOnly = true;
+            // 
+            // EsPrincipalTutorAImportar
+            // 
+            this.EsPrincipalTutorAImportar.DataPropertyName = "EsPrincipal";
+            this.EsPrincipalTutorAImportar.HeaderText = "Principal";
+            this.EsPrincipalTutorAImportar.Name = "EsPrincipalTutorAImportar";
+            this.EsPrincipalTutorAImportar.ReadOnly = true;
+            // 
+            // IdTutorAImportar
+            // 
+            this.IdTutorAImportar.DataPropertyName = "Id";
+            this.IdTutorAImportar.HeaderText = "IdTutorImportado";
+            this.IdTutorAImportar.Name = "IdTutorAImportar";
+            this.IdTutorAImportar.ReadOnly = true;
+            this.IdTutorAImportar.Visible = false;
+            // 
+            // CursoIdTutorAImportar
+            // 
+            this.CursoIdTutorAImportar.DataPropertyName = "CursoId";
+            this.CursoIdTutorAImportar.HeaderText = "CursoId";
+            this.CursoIdTutorAImportar.Name = "CursoIdTutorAImportar";
+            this.CursoIdTutorAImportar.ReadOnly = true;
+            this.CursoIdTutorAImportar.Visible = false;
+            // 
             // FrmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -877,5 +961,14 @@
         private Control.CustomButton BtnGuardarSocio;
         private Control.CustomButton BtnEditarSocio;
         private System.Windows.Forms.CheckBox chkPagaPorBanco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TelefonoTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MovilTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EsPrincipalTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdTutorAImportar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdTutorAImportar;
     }
 }
