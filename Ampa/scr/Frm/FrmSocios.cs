@@ -13,6 +13,7 @@ namespace Ampa.Frm
         //todo: controlar que no se puedan meter botones eidtar eternamente
         private bool _suppressAutoSelection;
         int _countForm = 0;
+        private readonly int  _cursoId= Program.ActualCurso.Id ;
         public FrmSocios()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Ampa.Frm
              List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
-                tutores = service.ObtenerTutoresPrincipales(Program.ActualCurso.Id);
+                tutores = service.ObtenerTutoresPrincipales(_cursoId);
             }
             _suppressAutoSelection = true;
             lblCurso.Text = Program.ActualCurso.Descripcion;
@@ -63,7 +64,7 @@ namespace Ampa.Frm
             List<AlumnoModel> alumnos;
             using (var service = AlumnoService.GetInstance())
             {
-                alumnos = service.ObtenerAlumnosPorSocioId(socioId);
+                alumnos = service.ObtenerAlumnosPorSocioId(socioId,_cursoId);
             }
             dgvAlumnos.DataSource = alumnos;
             dgvAlumnos.Refresh();
@@ -98,7 +99,7 @@ namespace Ampa.Frm
             List<TutorModel> tutores;
             using (var service = TutorService.GetInstance())
             {
-                tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), Program.ActualCurso.Id);
+                tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), _cursoId);
             }
             _suppressAutoSelection = true;
             dgvSocios.DataSource = tutores;

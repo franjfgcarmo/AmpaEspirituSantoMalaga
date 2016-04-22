@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Ampa.Helper;
 using Ampa.Modelo;
 using Ampa.Services;
 
@@ -13,8 +14,7 @@ namespace Ampa.Frm
         private readonly TipoEdicion _tipoEdicion;
         private bool _suppressAutoSelection;
         private readonly int _cursoId = Program.ActualCurso.Id;
-        #region [Eventos de formulario]
-
+        #region [Eventos de formulario]        
         public FrmSocio(TipoEdicion tipoEdicion, int? socioId=null)
         {
             _tipoEdicion = tipoEdicion;
@@ -48,6 +48,11 @@ namespace Ampa.Frm
 
         private void FrmSocio_Load(object sender, EventArgs e)
         {
+            using (var cursoService = CursoService.GetInstance())
+            {
+                btnImportarSocio.Enabled = cursoService.HayMasDeUnCurso();
+            }
+
             dgvAlumno.DefaultCellStyle.ForeColor = Color.Black;
             grdTutor.DefaultCellStyle.ForeColor = Color.Black;
             btnGuardarAlumno.Enabled = false;
@@ -83,7 +88,8 @@ namespace Ampa.Frm
                     CambiaEstadoCamposSocios(true);
                     btnNuevoAlumno.Enabled = false;
                     btnEditarAlumno.Enabled = false;
-                    btnGuardarAlumno.Enabled = false;
+                    btnGuardarAlumno.Enabled = true
+;
                     btnNuevoTutor.Enabled = false;
                     btnEditarTutor.Enabled = false;
                     BtnGuardarSocio.Enabled = true;
@@ -103,7 +109,25 @@ namespace Ampa.Frm
         #endregion
 
         #region [Eventos de socios]
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            var txt = ((TextBox)sender).Text;
+            if (string.IsNullOrWhiteSpace(txt)) return;
+            List<TutorModel> tutores;
+            using (var service = TutorService.GetInstance())
+            {
+                tutores = service.BusquedaTutoresPorNombre(txt.RemoveDiacritics(), _cursoId - 1);
+            }
+            _suppressAutoSelection = true;
+            grdImportarSocios.DataSource = tutores;
+            grdImportarSocios.Refresh();
+            _suppressAutoSelection = false;
+        }
 
+        private void grdImportarSocios_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
         private void CambiaEstadoCamposSocios(bool estado)
         {
             txtObservaciones.Enabled = estado;
@@ -123,6 +147,16 @@ namespace Ampa.Frm
             pnlAlumnos.Location.Offset(pnlAlumnos.Location.X, pnlAlumnos.Location.Y + pnlImportarSocio.Height);
             pnlPie.Location.Offset(pnlPie.Location.X, pnlPie.Location.Y + pnlImportarSocio.Height);
             Height = Height + pnlImportarSocio.Height;
+            List<TutorModel> tutores;
+            using (var service = TutorService.GetInstance())
+            {
+                tutores = service.ObtenerTutoresPrincipales(_cursoId-1);
+            }
+            _suppressAutoSelection = true;
+            if (tutores.Count == 0) return;
+            grdImportarSocios.DataSource = tutores;
+            grdImportarSocios.Refresh();
+            _suppressAutoSelection = false;
         }
 
         private void BtnEditarSocio_Click(object sender, EventArgs e)
@@ -211,7 +245,8 @@ namespace Ampa.Frm
                     Id = alumnoId,
                     Apellidos = txtApellidoAlumno.Text,
                     Curso = txtCursoAlumno.Text,
-                    SocioId = BaseSocioId.Value
+                    SocioId = BaseSocioId.Value,
+                    CursoId=_cursoId
                 };
                 if (result)
                 {
@@ -234,7 +269,7 @@ namespace Ampa.Frm
             List<AlumnoModel> alumnos;
             using (var service = AlumnoService.GetInstance())
             {
-                alumnos = service.ObtenerAlumnosPorSocioId(BaseSocioId.Value);
+                alumnos = service.ObtenerAlumnosPorSocioId(BaseSocioId.Value,_cursoId);
             }
             _suppressAutoSelection = true;
             dgvAlumno.DataSource = alumnos;
@@ -313,7 +348,8 @@ namespace Ampa.Frm
                     EsPrincipal = chkPrincipal.Checked,
                     Movil = txtMovilTutor.Text,
                     Telefono = txtTelefonoTutor.Text,
-                    SocioId = BaseSocioId.Value
+                    SocioId = BaseSocioId.Value,
+                    CursoId = _cursoId
                 };
                 if (result)
                 {
@@ -390,8 +426,6 @@ namespace Ampa.Frm
             btnGuardarTutor.Enabled = false;
         }
 
-        #endregion
-
-      
+        #endregion        
     }
 }

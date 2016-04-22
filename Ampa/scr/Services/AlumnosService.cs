@@ -18,9 +18,9 @@ namespace Ampa.Services
             return Connection.DbConnection.Query<AlumnoModel>(query).FirstOrDefault();
         }
 
-        public List<AlumnoModel> ObtenerAlumnosPorSocioId(int socioId)
+        public List<AlumnoModel> ObtenerAlumnosPorSocioId(int socioId, int cursoId)
         {
-            var query = @"SELECT * FROM Alumnos WHERE SocioId =" + socioId;
+            var query = string.Format(@"SELECT * FROM Alumnos WHERE SocioId = {0} AND CursoId = {1}", socioId,cursoId);
             return Connection.DbConnection.Query<AlumnoModel>(query).ToList();
         }
 
@@ -36,9 +36,9 @@ namespace Ampa.Services
 
         public bool Insert(AlumnoModel alumno)
         {
-            var query = string.Format("INSERT INTO Alumnos (Nombre,Apellidos, Curso, SocioId)" +
-                                      "VALUES ('{0}','{1}','{2}',{3})", alumno.Nombre, alumno.Apellidos, alumno.Curso,
-                alumno.SocioId);
+            var query = string.Format("INSERT INTO Alumnos (Nombre,Apellidos, Curso, SocioId, CursoId)" +
+                                      "VALUES ('{0}','{1}','{2}',{3},{4})", alumno.Nombre, alumno.Apellidos, alumno.Curso,
+                alumno.SocioId,alumno.CursoId);
             return Connection.Execute(query) > 0;
         }
 

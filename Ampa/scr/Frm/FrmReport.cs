@@ -17,10 +17,10 @@ namespace Ampa.Frm
         private void FrmReport_Load(object sender, EventArgs e)
         {
             var dsTutores = Program.DbConnection.InitDataAdapter(
-                string.Format("Select Nombre, Apellidos, Telefono, Movil,Email From Tutores Where  SocioId ={0} ",
-                    _socioId));
+                string.Format("Select Nombre, Apellidos, Telefono, Movil,Email From Tutores Where  SocioId ={0} AND CursoId = {1}",
+                    _socioId,Program.ActualCurso.Id));
             var dsAlumnos = Program.DbConnection.InitDataAdapter(
-                string.Format("Select Nombre, Apellidos, Curso From Alumnos Where  SocioId ={0} ", _socioId));
+                string.Format("Select Nombre, Apellidos, Curso From Alumnos Where  SocioId ={0}  AND CursoId = {1}", _socioId, Program.ActualCurso.Id));
             reportViewer1.ProcessingMode = ProcessingMode.Local;
 
             reportViewer1.LocalReport.ReportPath = @"Report\Ficha.rdlc";

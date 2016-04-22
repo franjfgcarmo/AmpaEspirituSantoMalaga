@@ -7,5 +7,6 @@
         public string Apellidos { get; set; }
         public string Curso { get; set; }
         public int SocioId { get; set; }
+        public int CursoId { get; set; }
     }
 }

@@ -78,7 +78,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnImprimir = new Ampa.Control.CustomButton();
-            this.btnGuardarSocio2 = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlPie = new System.Windows.Forms.Panel();
@@ -648,6 +647,7 @@
             this.grdImportarSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdImportarSocios.Size = new System.Drawing.Size(836, 95);
             this.grdImportarSocios.TabIndex = 1;
+            this.grdImportarSocios.SelectionChanged += new System.EventHandler(this.grdImportarSocios_SelectionChanged);
             // 
             // textBox2
             // 
@@ -656,11 +656,11 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(309, 23);
             this.textBox2.TabIndex = 0;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pnlButton
             // 
             this.pnlButton.Controls.Add(this.btnImprimir);
-            this.pnlButton.Controls.Add(this.btnGuardarSocio2);
             this.pnlButton.Controls.Add(this.btnImportarSocio);
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
@@ -677,7 +677,7 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.Location = new System.Drawing.Point(388, 0);
+            this.btnImprimir.Location = new System.Drawing.Point(131, 0);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(128, 28);
@@ -685,22 +685,6 @@
             this.btnImprimir.Text = "Imprimir Socio";
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnGuardarSocio2
-            // 
-            this.btnGuardarSocio2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.btnGuardarSocio2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
-            this.btnGuardarSocio2.FlatAppearance.BorderSize = 2;
-            this.btnGuardarSocio2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarSocio2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarSocio2.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarSocio2.Location = new System.Drawing.Point(259, 0);
-            this.btnGuardarSocio2.Margin = new System.Windows.Forms.Padding(0);
-            this.btnGuardarSocio2.Name = "btnGuardarSocio2";
-            this.btnGuardarSocio2.Size = new System.Drawing.Size(128, 28);
-            this.btnGuardarSocio2.TabIndex = 2;
-            this.btnGuardarSocio2.Text = "Guardar Socio";
-            this.btnGuardarSocio2.UseVisualStyleBackColor = false;
             // 
             // btnImportarSocio
             // 
@@ -867,7 +851,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvAlumno;
         private Control.CustomButton btnNuevoTutor;
-        private Control.CustomButton btnGuardarSocio2;
         private Control.CustomButton btnNuevoAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidosAlumno;

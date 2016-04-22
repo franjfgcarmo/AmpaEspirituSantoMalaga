@@ -25,7 +25,7 @@ namespace Ampa.Services
         {
             var query = string.Format("SELECT t.* FROM " +
                                       "Tutores t INNER JOIN " +
-                                      "CursosSocios cs on cs.SocioId = t.SocioId " +
+                                      "CursosSocios cs on cs.SocioId = t.SocioId AND cs.CursoId = t.CursoId " +
                                       "WHERE cs.CursoId = {0} AND t.SocioId={1}", anyo, socioId);
             return Connection.DbConnection.Query<TutorModel>(query).ToList();
         }
@@ -34,7 +34,7 @@ namespace Ampa.Services
         {
             var query = "SELECT t.* " +
                         "FROM Tutores t INNER JOIN " +
-                        "CursosSocios cs on cs.SocioId = t.SocioId " +
+                        "CursosSocios cs on cs.SocioId = t.SocioId AND cs.CursoId = t.CursoId " +
                         "WHERE t.EsPrincipal=True AND cs.CursoId =" + anyo;
             return Connection.DbConnection.Query<TutorModel>(query).ToList();
         }
@@ -43,7 +43,7 @@ namespace Ampa.Services
         {
             var query = string.Format(@"SELECT t.* 
                             FROM Tutores t INNER JOIN
-                                CursosSocios cs on cs.SocioId = t.SocioId 
+                                CursosSocios cs on cs.SocioId = t.SocioId  AND cs.CursoId = t.CursoId
                             WHERE (instr(1,t.Nombre +"" ""+ t.Apellidos,'{0}')  or instr(1,t.Apellidos,'{0}') ) AND cs.CursoId ={1}",
                 busqueda, anyo);
             return Connection.DbConnection.Query<TutorModel>(query).ToList();
@@ -72,10 +72,10 @@ namespace Ampa.Services
         public bool Insert(TutorModel tutor)
         {
             var query = string.Format("INSERT INTO Tutores " +
-                                      "(Nombre,Apellidos, Telefono, Movil, Email, EsPrincipal, SocioId)" +
-                                      "VALUES ('{0}','{1}','{2}','{3}','{4}',{5},{6})",
+                                      "(Nombre,Apellidos, Telefono, Movil, Email, EsPrincipal, SocioId, CursoId)" +
+                                      "VALUES ('{0}','{1}','{2}','{3}','{4}',{5},{6},{7})",
                 tutor.Nombre, tutor.Apellidos, tutor.Telefono, tutor.Movil, tutor.Email, tutor.EsPrincipal,
-                tutor.SocioId);
+                tutor.SocioId,tutor.CursoId);
             return Connection.Execute(query) > 0;
         }
 

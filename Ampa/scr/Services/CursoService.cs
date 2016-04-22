@@ -26,5 +26,10 @@ namespace Ampa.Services
             var queryInsert = string.Format("INSERT INTO Cursos (Id,Descripcion) VALUES ({0},'{1}')", anyo, descripción);
             return Connection.Execute(queryInsert)>0;
         }
+
+        public bool HayMasDeUnCurso()
+        {
+            return Connection.DbConnection.Query<int>("Select Count(1) AS Total From Cursos").FirstOrDefault()>1;
+        }
     }
 }

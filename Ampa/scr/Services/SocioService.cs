@@ -20,7 +20,7 @@ namespace Ampa.Services
             if (socio == null) return null;
             var alumnoService = AlumnoService.GetInstance();
             socio.Tutores = tutorService.ObtenerTutoresPorSocioId(anyo, socioId);
-            socio.Alumnos = alumnoService.ObtenerAlumnosPorSocioId(socioId);
+            socio.Alumnos = alumnoService.ObtenerAlumnosPorSocioId(socioId,anyo);
             return socio;
         }
 
@@ -51,6 +51,11 @@ namespace Ampa.Services
             }
             
             throw new Exception("Ha ocurrido un error al intentar obtener el socioId");
+        }
+
+        public bool ImportarSocio(int socioId, int cursoId)
+        {
+            return true;
         }
     }
 }
