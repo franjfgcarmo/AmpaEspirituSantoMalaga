@@ -28,153 +28,302 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSocios));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn = new System.Windows.Forms.Button();
-            this.btnSiguiente = new System.Windows.Forms.Button();
-            this.btnAnterior = new System.Windows.Forms.Button();
-            this.btnPrimero = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.dgvAlumnos = new System.Windows.Forms.DataGridView();
+            this.NombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocioIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvSocios = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCurso = new System.Windows.Forms.Label();
+            this.btnNuevoCurso = new Ampa.Control.CustomButton();
+            this.btnNuevoSocio = new Ampa.Control.CustomButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Movil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPrincipal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // timer1
             // 
-            this.panel1.Controls.Add(this.btn);
-            this.panel1.Controls.Add(this.btnSiguiente);
-            this.panel1.Controls.Add(this.btnAnterior);
-            this.panel1.Controls.Add(this.btnPrimero);
-            this.panel1.Controls.Add(this.btnGuardar);
-            this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.btnNuevo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1432, 81);
-            this.panel1.TabIndex = 8;
-            // 
-            // btn
-            // 
-            this.btn.Location = new System.Drawing.Point(983, 30);
-            this.btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(100, 28);
-            this.btn.TabIndex = 13;
-            this.btn.Text = "button4";
-            this.btn.UseVisualStyleBackColor = true;
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.Location = new System.Drawing.Point(875, 30);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(100, 28);
-            this.btnSiguiente.TabIndex = 12;
-            this.btnSiguiente.Text = "button3";
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            // 
-            // btnAnterior
-            // 
-            this.btnAnterior.Location = new System.Drawing.Point(767, 28);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(100, 28);
-            this.btnAnterior.TabIndex = 11;
-            this.btnAnterior.Text = "button2";
-            this.btnAnterior.UseVisualStyleBackColor = true;
-            // 
-            // btnPrimero
-            // 
-            this.btnPrimero.Location = new System.Drawing.Point(659, 28);
-            this.btnPrimero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPrimero.Name = "btnPrimero";
-            this.btnPrimero.Size = new System.Drawing.Size(100, 28);
-            this.btnPrimero.TabIndex = 10;
-            this.btnPrimero.Text = "<<";
-            this.btnPrimero.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(373, 15);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(99, 43);
-            this.btnGuardar.TabIndex = 9;
-            this.btnGuardar.Text = "Guardar Socio";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(480, 15);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(99, 43);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(267, 15);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(99, 43);
-            this.btnNuevo.TabIndex = 7;
-            this.btnNuevo.Text = "Nuevo Socio";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dgvAlumnos);
+            this.panel2.Controls.Add(this.dgvSocios);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 81);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1432, 633);
+            this.panel2.Size = new System.Drawing.Size(1148, 420);
             this.panel2.TabIndex = 9;
             // 
-            // dataGridView2
+            // dgvAlumnos
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(16, 322);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1400, 251);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvAlumnos.AllowUserToAddRows = false;
+            this.dgvAlumnos.AllowUserToDeleteRows = false;
+            this.dgvAlumnos.AllowUserToResizeRows = false;
+            this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NombreAlumno,
+            this.IdAlumno,
+            this.SocioIdAlumno,
+            this.ApellidoAlumno,
+            this.Curso});
+            this.dgvAlumnos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvAlumnos.GridColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvAlumnos.Location = new System.Drawing.Point(0, 308);
+            this.dgvAlumnos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvAlumnos.MultiSelect = false;
+            this.dgvAlumnos.Name = "dgvAlumnos";
+            this.dgvAlumnos.ReadOnly = true;
+            this.dgvAlumnos.RowHeadersVisible = false;
+            this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlumnos.Size = new System.Drawing.Size(1148, 98);
+            this.dgvAlumnos.TabIndex = 1;
             // 
-            // dataGridView1
+            // NombreAlumno
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 7);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1400, 308);
-            this.dataGridView1.TabIndex = 0;
+            this.NombreAlumno.DataPropertyName = "Nombre";
+            this.NombreAlumno.HeaderText = "Nombre";
+            this.NombreAlumno.Name = "NombreAlumno";
+            this.NombreAlumno.ReadOnly = true;
+            this.NombreAlumno.Width = 200;
+            // 
+            // IdAlumno
+            // 
+            this.IdAlumno.DataPropertyName = "Id";
+            this.IdAlumno.HeaderText = "Id";
+            this.IdAlumno.Name = "IdAlumno";
+            this.IdAlumno.ReadOnly = true;
+            this.IdAlumno.Visible = false;
+            // 
+            // SocioIdAlumno
+            // 
+            this.SocioIdAlumno.DataPropertyName = "SocioId";
+            this.SocioIdAlumno.HeaderText = "SocioId";
+            this.SocioIdAlumno.Name = "SocioIdAlumno";
+            this.SocioIdAlumno.ReadOnly = true;
+            this.SocioIdAlumno.Visible = false;
+            // 
+            // ApellidoAlumno
+            // 
+            this.ApellidoAlumno.DataPropertyName = "Apellidos";
+            this.ApellidoAlumno.HeaderText = "Apellidos";
+            this.ApellidoAlumno.Name = "ApellidoAlumno";
+            this.ApellidoAlumno.ReadOnly = true;
+            this.ApellidoAlumno.Width = 200;
+            // 
+            // Curso
+            // 
+            this.Curso.DataPropertyName = "Curso";
+            this.Curso.HeaderText = "Curso";
+            this.Curso.Name = "Curso";
+            this.Curso.ReadOnly = true;
+            // 
+            // dgvSocios
+            // 
+            this.dgvSocios.AllowUserToAddRows = false;
+            this.dgvSocios.AllowUserToDeleteRows = false;
+            this.dgvSocios.AllowUserToResizeRows = false;
+            this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.SocioId,
+            this.Nombre,
+            this.Apellidos,
+            this.Telefono,
+            this.Movil,
+            this.Email,
+            this.EsPrincipal});
+            this.dgvSocios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvSocios.GridColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvSocios.Location = new System.Drawing.Point(0, 0);
+            this.dgvSocios.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvSocios.MultiSelect = false;
+            this.dgvSocios.Name = "dgvSocios";
+            this.dgvSocios.ReadOnly = true;
+            this.dgvSocios.RowHeadersVisible = false;
+            this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSocios.Size = new System.Drawing.Size(1148, 308);
+            this.dgvSocios.TabIndex = 0;
+            this.dgvSocios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellClick);
+            this.dgvSocios.SelectionChanged += new System.EventHandler(this.dgvSocios_SelectionChanged);
+            this.dgvSocios.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvSocios_MouseDoubleClick);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblCurso);
+            this.panel1.Controls.Add(this.btnNuevoCurso);
+            this.panel1.Controls.Add(this.btnNuevoSocio);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtBusqueda);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1148, 55);
+            this.panel1.TabIndex = 8;
+            // 
+            // lblCurso
+            // 
+            this.lblCurso.AutoSize = true;
+            this.lblCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurso.ForeColor = System.Drawing.Color.White;
+            this.lblCurso.Location = new System.Drawing.Point(761, 13);
+            this.lblCurso.Name = "lblCurso";
+            this.lblCurso.Size = new System.Drawing.Size(192, 25);
+            this.lblCurso.TabIndex = 3;
+            this.lblCurso.Text = "Curso 2015/2016";
+            // 
+            // btnNuevoCurso
+            // 
+            this.btnNuevoCurso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnNuevoCurso.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnNuevoCurso.FlatAppearance.BorderSize = 2;
+            this.btnNuevoCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoCurso.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoCurso.Location = new System.Drawing.Point(614, 4);
+            this.btnNuevoCurso.Name = "btnNuevoCurso";
+            this.btnNuevoCurso.Size = new System.Drawing.Size(117, 39);
+            this.btnNuevoCurso.TabIndex = 2;
+            this.btnNuevoCurso.Text = "Nuevo Curso";
+            this.btnNuevoCurso.UseVisualStyleBackColor = false;
+            this.btnNuevoCurso.Click += new System.EventHandler(this.btnNuevoCurso_Click);
+            // 
+            // btnNuevoSocio
+            // 
+            this.btnNuevoSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnNuevoSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnNuevoSocio.FlatAppearance.BorderSize = 2;
+            this.btnNuevoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoSocio.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoSocio.Location = new System.Drawing.Point(491, 4);
+            this.btnNuevoSocio.Name = "btnNuevoSocio";
+            this.btnNuevoSocio.Size = new System.Drawing.Size(117, 39);
+            this.btnNuevoSocio.TabIndex = 1;
+            this.btnNuevoSocio.Text = "Nuevo Socio";
+            this.btnNuevoSocio.UseVisualStyleBackColor = false;
+            this.btnNuevoSocio.Click += new System.EventHandler(this.btnNuevoSocio_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(221, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Búsqueda por Nombre o Apellido:";
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.Location = new System.Drawing.Point(240, 12);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(245, 23);
+            this.txtBusqueda.TabIndex = 0;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 50;
+            // 
+            // SocioId
+            // 
+            this.SocioId.DataPropertyName = "SocioId";
+            this.SocioId.HeaderText = "Socio";
+            this.SocioId.Name = "SocioId";
+            this.SocioId.ReadOnly = true;
+            this.SocioId.Width = 50;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 230;
+            // 
+            // Apellidos
+            // 
+            this.Apellidos.DataPropertyName = "Apellidos";
+            this.Apellidos.HeaderText = "Apellidos";
+            this.Apellidos.Name = "Apellidos";
+            this.Apellidos.ReadOnly = true;
+            this.Apellidos.Width = 240;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 90;
+            // 
+            // Movil
+            // 
+            this.Movil.DataPropertyName = "Movil";
+            this.Movil.HeaderText = "Móvil";
+            this.Movil.Name = "Movil";
+            this.Movil.ReadOnly = true;
+            this.Movil.Width = 90;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 250;
+            // 
+            // EsPrincipal
+            // 
+            this.EsPrincipal.DataPropertyName = "EsPrincipal";
+            this.EsPrincipal.HeaderText = "Tutor Principal";
+            this.EsPrincipal.Name = "EsPrincipal";
+            this.EsPrincipal.ReadOnly = true;
             // 
             // FrmSocios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1432, 714);
+            this.ClientSize = new System.Drawing.Size(1148, 475);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FrmSocios";
-            this.panel1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.FrmSocios_Load);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -182,17 +331,29 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn;
-        private System.Windows.Forms.Button btnSiguiente;
-        private System.Windows.Forms.Button btnAnterior;
-        private System.Windows.Forms.Button btnPrimero;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-
+        private System.Windows.Forms.DataGridView dgvAlumnos;
+        private System.Windows.Forms.DataGridView dgvSocios;
+        private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.Label label1;
+        private Control.CustomButton btnNuevoSocio;
+        private Control.CustomButton btnNuevoCurso;
+        private System.Windows.Forms.Label lblCurso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocioId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Movil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EsPrincipal;
+        
 
     }
 }

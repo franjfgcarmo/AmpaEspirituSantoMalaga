@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ampa</RootNamespace>
     <AssemblyName>Ampa</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -51,16 +52,22 @@
     <ApplicationIcon>Logo_Colegio_color-001.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net40\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -77,52 +84,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\CtlButton.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Frm\FrmReport.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Control\CtlButton.Designer.cs">
-      <DependentUpon>CtlButton.cs</DependentUpon>
+    <Compile Include="Frm\FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AlumnosModel.cs" />
+    <Compile Include="Modelo\CursoModel.cs" />
+    <Compile Include="Modelo\CursosSociosModel.cs" />
+    <Compile Include="Modelo\SocioModel.cs" />
+    <Compile Include="Modelo\TipoEdicion.cs" />
+    <Compile Include="Modelo\TutorModel.cs" />
+    <Compile Include="Modelo\UsuarioModel.cs" />
+    <Compile Include="ConnectionProvider\Connection.cs" />
+    <Compile Include="Control\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entities\AmpaDataSet.cs">
+      <DependentUpon>AmpaDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\AmpaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Alumnos.cs">
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\AmpaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmpaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\AmpaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\AmpaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AmpaModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Cursos.cs">
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Socios.cs">
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Tutores.cs">
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Usuario.cs">
-      <DependentUpon>AmpaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Frm\FrmAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm\FrmAcceso.Designer.cs">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmSocio.Designer.cs">
+      <DependentUpon>FrmSocio.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmSocios.cs">
       <SubType>Form</SubType>
@@ -136,13 +134,23 @@
     <Compile Include="Frm\FrmBase.Designer.cs">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ExtensionMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Control\CtlButton.resx">
-      <DependentUpon>CtlButton.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Services\AlumnosService.cs" />
+    <Compile Include="Services\CursoService.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\SocioService.cs" />
+    <Compile Include="Services\TutorService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmSocio.resx">
+      <DependentUpon>FrmSocio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmSocios.resx">
       <DependentUpon>FrmSocios.cs</DependentUpon>
@@ -160,11 +168,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\Ficha.rdlc" />
-    <EntityDeploy Include="Entities\AmpaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AmpaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <EmbeddedResource Include="Report\Ficha.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Entities\AmpaDataSet.xsc">
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
     </None>
@@ -175,9 +181,6 @@
     </EmbeddedResource>
     <None Include="Entities\AmpaDataSet.xss">
       <DependentUpon>AmpaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Entities\AmpaModel.edmx.diagram">
-      <DependentUpon>AmpaModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -194,22 +197,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppData\Ampa.mdf">
+    <Content Include="AppData\Ampa.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\Ampa_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Ampa.mdf</DependentUpon>
-    </Content>
-    <Content Include="Entities\AmpaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmpaModel.edmx</DependentUpon>
-      <LastGenOutput>AmpaModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\AmpaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AmpaModel.edmx</DependentUpon>
-      <LastGenOutput>AmpaModel.cs</LastGenOutput>
     </Content>
     <Content Include="Images\Logo_Colegio_color-001.ico" />
     <Content Include="Leeme.txt" />
@@ -238,7 +227,17 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="DAO">
+      <Guid>{00025E01-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
