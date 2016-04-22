@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Modelo\AlumnosModel.cs" />
     <Compile Include="Modelo\CursoModel.cs" />
+    <Compile Include="Modelo\CursosSociosModel.cs" />
     <Compile Include="Modelo\SocioModel.cs" />
     <Compile Include="Modelo\TipoEdicion.cs" />
     <Compile Include="Modelo\TutorModel.cs" />

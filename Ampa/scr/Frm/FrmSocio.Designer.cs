@@ -78,15 +78,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnImprimir = new Ampa.Control.CustomButton();
-            this.btnGuardarSocio = new Ampa.Control.CustomButton();
+            this.btnGuardarSocio2 = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlPie = new System.Windows.Forms.Panel();
+            this.BtnGuardarSocio = new Ampa.Control.CustomButton();
+            this.BtnEditarSocio = new Ampa.Control.CustomButton();
             this.label8 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
-            this.chckPagaPorBanco = new System.Windows.Forms.CheckBox();
-            this.customButton1 = new Ampa.Control.CustomButton();
-            this.customButton2 = new Ampa.Control.CustomButton();
+            this.chkPagaPorBanco = new System.Windows.Forms.CheckBox();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -660,7 +660,7 @@
             // pnlButton
             // 
             this.pnlButton.Controls.Add(this.btnImprimir);
-            this.pnlButton.Controls.Add(this.btnGuardarSocio);
+            this.pnlButton.Controls.Add(this.btnGuardarSocio2);
             this.pnlButton.Controls.Add(this.btnImportarSocio);
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
@@ -686,21 +686,21 @@
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // btnGuardarSocio
+            // btnGuardarSocio2
             // 
-            this.btnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.btnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
-            this.btnGuardarSocio.FlatAppearance.BorderSize = 2;
-            this.btnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarSocio.Location = new System.Drawing.Point(259, 0);
-            this.btnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.btnGuardarSocio.Name = "btnGuardarSocio";
-            this.btnGuardarSocio.Size = new System.Drawing.Size(128, 28);
-            this.btnGuardarSocio.TabIndex = 2;
-            this.btnGuardarSocio.Text = "Guardar Socio";
-            this.btnGuardarSocio.UseVisualStyleBackColor = false;
+            this.btnGuardarSocio2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.btnGuardarSocio2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(0)))), ((int)(((byte)(181)))));
+            this.btnGuardarSocio2.FlatAppearance.BorderSize = 2;
+            this.btnGuardarSocio2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarSocio2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarSocio2.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarSocio2.Location = new System.Drawing.Point(259, 0);
+            this.btnGuardarSocio2.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGuardarSocio2.Name = "btnGuardarSocio2";
+            this.btnGuardarSocio2.Size = new System.Drawing.Size(128, 28);
+            this.btnGuardarSocio2.TabIndex = 2;
+            this.btnGuardarSocio2.Text = "Guardar Socio";
+            this.btnGuardarSocio2.UseVisualStyleBackColor = false;
             // 
             // btnImportarSocio
             // 
@@ -728,22 +728,56 @@
             // 
             // pnlPie
             // 
-            this.pnlPie.Controls.Add(this.customButton2);
-            this.pnlPie.Controls.Add(this.customButton1);
+            this.pnlPie.Controls.Add(this.BtnGuardarSocio);
+            this.pnlPie.Controls.Add(this.BtnEditarSocio);
             this.pnlPie.Controls.Add(this.label8);
             this.pnlPie.Controls.Add(this.txtObservaciones);
-            this.pnlPie.Controls.Add(this.chckPagaPorBanco);
+            this.pnlPie.Controls.Add(this.chkPagaPorBanco);
             this.pnlPie.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPie.Location = new System.Drawing.Point(0, 495);
             this.pnlPie.Name = "pnlPie";
             this.pnlPie.Size = new System.Drawing.Size(836, 100);
             this.pnlPie.TabIndex = 14;
             // 
+            // BtnGuardarSocio
+            // 
+            this.BtnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.BtnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnGuardarSocio.FlatAppearance.BorderSize = 2;
+            this.BtnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGuardarSocio.ForeColor = System.Drawing.Color.White;
+            this.BtnGuardarSocio.Location = new System.Drawing.Point(708, 38);
+            this.BtnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnGuardarSocio.Name = "BtnGuardarSocio";
+            this.BtnGuardarSocio.Size = new System.Drawing.Size(120, 28);
+            this.BtnGuardarSocio.TabIndex = 18;
+            this.BtnGuardarSocio.Text = "Guardar";
+            this.BtnGuardarSocio.UseVisualStyleBackColor = false;
+            this.BtnGuardarSocio.Click += new System.EventHandler(this.BtnGuardarSocio_Click);
+            // 
+            // BtnEditarSocio
+            // 
+            this.BtnEditarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.BtnEditarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnEditarSocio.FlatAppearance.BorderSize = 2;
+            this.BtnEditarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEditarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEditarSocio.ForeColor = System.Drawing.Color.White;
+            this.BtnEditarSocio.Location = new System.Drawing.Point(708, 5);
+            this.BtnEditarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnEditarSocio.Name = "BtnEditarSocio";
+            this.BtnEditarSocio.Size = new System.Drawing.Size(120, 28);
+            this.BtnEditarSocio.TabIndex = 17;
+            this.BtnEditarSocio.Text = "Editar ";
+            this.BtnEditarSocio.UseVisualStyleBackColor = false;
+            this.BtnEditarSocio.Click += new System.EventHandler(this.BtnEditarSocio_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(166, 1);
+            this.label8.Location = new System.Drawing.Point(42, 44);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 17);
             this.label8.TabIndex = 16;
@@ -751,59 +785,27 @@
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(282, 2);
+            this.txtObservaciones.Location = new System.Drawing.Point(162, 5);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(543, 60);
             this.txtObservaciones.TabIndex = 15;
             // 
-            // chckPagaPorBanco
+            // chkPagaPorBanco
             // 
-            this.chckPagaPorBanco.AutoSize = true;
-            this.chckPagaPorBanco.ForeColor = System.Drawing.Color.White;
-            this.chckPagaPorBanco.Location = new System.Drawing.Point(12, 1);
-            this.chckPagaPorBanco.Name = "chckPagaPorBanco";
-            this.chckPagaPorBanco.Size = new System.Drawing.Size(144, 21);
-            this.chckPagaPorBanco.TabIndex = 14;
-            this.chckPagaPorBanco.Text = "Pagado por banco";
-            this.chckPagaPorBanco.UseVisualStyleBackColor = true;
-            // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.customButton1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.customButton1.FlatAppearance.BorderSize = 2;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(7, 27);
-            this.customButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(120, 28);
-            this.customButton1.TabIndex = 17;
-            this.customButton1.Text = "Editar Alumno";
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
-            // customButton2
-            // 
-            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.customButton2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.customButton2.FlatAppearance.BorderSize = 2;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton2.ForeColor = System.Drawing.Color.White;
-            this.customButton2.Location = new System.Drawing.Point(138, 27);
-            this.customButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(120, 28);
-            this.customButton2.TabIndex = 18;
-            this.customButton2.Text = "Guardar Alumno";
-            this.customButton2.UseVisualStyleBackColor = false;
+            this.chkPagaPorBanco.AutoSize = true;
+            this.chkPagaPorBanco.ForeColor = System.Drawing.Color.White;
+            this.chkPagaPorBanco.Location = new System.Drawing.Point(12, 1);
+            this.chkPagaPorBanco.Name = "chkPagaPorBanco";
+            this.chkPagaPorBanco.Size = new System.Drawing.Size(144, 21);
+            this.chkPagaPorBanco.TabIndex = 14;
+            this.chkPagaPorBanco.Text = "Pagado por banco";
+            this.chkPagaPorBanco.UseVisualStyleBackColor = true;
             // 
             // FrmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(836, 559);
+            this.ClientSize = new System.Drawing.Size(836, 566);
             this.Controls.Add(this.pnlPie);
             this.Controls.Add(this.pnlAlumnos);
             this.Controls.Add(this.pnlTutores);
@@ -811,6 +813,7 @@
             this.Controls.Add(this.pnlButton);
             this.Controls.Add(this.textBox1);
             this.Name = "FrmSocio";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSocio_FormClosed);
             this.Load += new System.EventHandler(this.FrmSocio_Load);
             this.pnlAlumnos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -864,7 +867,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvAlumno;
         private Control.CustomButton btnNuevoTutor;
-        private Control.CustomButton btnGuardarSocio;
+        private Control.CustomButton btnGuardarSocio2;
         private Control.CustomButton btnNuevoAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidosAlumno;
@@ -888,8 +891,8 @@
         private System.Windows.Forms.Panel pnlPie;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtObservaciones;
-        private Control.CustomButton customButton2;
-        private Control.CustomButton customButton1;
-        private System.Windows.Forms.CheckBox chckPagaPorBanco;
+        private Control.CustomButton BtnGuardarSocio;
+        private Control.CustomButton BtnEditarSocio;
+        private System.Windows.Forms.CheckBox chkPagaPorBanco;
     }
 }

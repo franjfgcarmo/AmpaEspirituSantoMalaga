@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSocios));
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.NombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +40,7 @@
             this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCurso = new System.Windows.Forms.Label();
             this.btnNuevoCurso = new Ampa.Control.CustomButton();
             this.btnNuevoSocio = new Ampa.Control.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,11 +52,18 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Movil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPrincipal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel2
             // 
@@ -64,7 +73,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1103, 420);
+            this.panel2.Size = new System.Drawing.Size(1148, 420);
             this.panel2.TabIndex = 9;
             // 
             // dgvAlumnos
@@ -88,7 +97,7 @@
             this.dgvAlumnos.ReadOnly = true;
             this.dgvAlumnos.RowHeadersVisible = false;
             this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlumnos.Size = new System.Drawing.Size(1103, 98);
+            this.dgvAlumnos.Size = new System.Drawing.Size(1148, 98);
             this.dgvAlumnos.TabIndex = 1;
             // 
             // NombreAlumno
@@ -143,7 +152,8 @@
             this.Apellidos,
             this.Telefono,
             this.Movil,
-            this.Email});
+            this.Email,
+            this.EsPrincipal});
             this.dgvSocios.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvSocios.GridColor = System.Drawing.Color.CornflowerBlue;
             this.dgvSocios.Location = new System.Drawing.Point(0, 0);
@@ -153,7 +163,7 @@
             this.dgvSocios.ReadOnly = true;
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSocios.Size = new System.Drawing.Size(1103, 308);
+            this.dgvSocios.Size = new System.Drawing.Size(1148, 308);
             this.dgvSocios.TabIndex = 0;
             this.dgvSocios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellClick);
             this.dgvSocios.SelectionChanged += new System.EventHandler(this.dgvSocios_SelectionChanged);
@@ -161,7 +171,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblCurso);
             this.panel1.Controls.Add(this.btnNuevoCurso);
             this.panel1.Controls.Add(this.btnNuevoSocio);
             this.panel1.Controls.Add(this.label1);
@@ -170,19 +180,19 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1103, 55);
+            this.panel1.Size = new System.Drawing.Size(1148, 55);
             this.panel1.TabIndex = 8;
             // 
-            // label2
+            // lblCurso
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(761, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Curso 2015/2016";
+            this.lblCurso.AutoSize = true;
+            this.lblCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurso.ForeColor = System.Drawing.Color.White;
+            this.lblCurso.Location = new System.Drawing.Point(761, 13);
+            this.lblCurso.Name = "lblCurso";
+            this.lblCurso.Size = new System.Drawing.Size(192, 25);
+            this.lblCurso.TabIndex = 3;
+            this.lblCurso.Text = "Curso 2015/2016";
             // 
             // btnNuevoCurso
             // 
@@ -257,7 +267,7 @@
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 250;
+            this.Nombre.Width = 230;
             // 
             // Apellidos
             // 
@@ -265,7 +275,7 @@
             this.Apellidos.HeaderText = "Apellidos";
             this.Apellidos.Name = "Apellidos";
             this.Apellidos.ReadOnly = true;
-            this.Apellidos.Width = 250;
+            this.Apellidos.Width = 240;
             // 
             // Telefono
             // 
@@ -273,6 +283,7 @@
             this.Telefono.HeaderText = "Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 90;
             // 
             // Movil
             // 
@@ -280,6 +291,7 @@
             this.Movil.HeaderText = "Móvil";
             this.Movil.Name = "Movil";
             this.Movil.ReadOnly = true;
+            this.Movil.Width = 90;
             // 
             // Email
             // 
@@ -289,11 +301,18 @@
             this.Email.ReadOnly = true;
             this.Email.Width = 250;
             // 
+            // EsPrincipal
+            // 
+            this.EsPrincipal.DataPropertyName = "EsPrincipal";
+            this.EsPrincipal.HeaderText = "Tutor Principal";
+            this.EsPrincipal.Name = "EsPrincipal";
+            this.EsPrincipal.ReadOnly = true;
+            // 
             // FrmSocios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 475);
+            this.ClientSize = new System.Drawing.Size(1148, 475);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -319,12 +338,13 @@
         private System.Windows.Forms.Label label1;
         private Control.CustomButton btnNuevoSocio;
         private Control.CustomButton btnNuevoCurso;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCurso;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -332,6 +352,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Movil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EsPrincipal;
         
 
     }
