@@ -1,6 +1,6 @@
 # AmpaEspirituSantoMalaga
 Es una pequeña aplicación de escritorio para la gestión de los socios del Ampa del Colegio Espiritu Santo de Málaga.
-Esta aplicación esta personalizada para el Ampa del colegio Espiritu Santo, aunque puede ser utiliza por cualquier otra Ampa.
+Esta aplicación esta personalizada para el Ampa del colegio Espiritu Santo, aunque puede ser utiliza por cualquier otra asociación del Ampa.
 
 #Tecnologías utilizadas.
 Dapper. Es motivo porque es una wrapper de Ado.Net y para hacer consulta y obtener los resultados se hace de una manera fácil y comoda.
