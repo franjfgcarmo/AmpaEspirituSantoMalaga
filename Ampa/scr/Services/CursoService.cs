@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Ampa.Modelo;
 using Dapper;
 
@@ -30,6 +31,11 @@ namespace Ampa.Services
         public bool HayMasDeUnCurso()
         {
             return Connection.DbConnection.Query<int>("Select Count(1) AS Total From Cursos").FirstOrDefault()>1;
+        }
+
+        public List<CursoModel> GetTodosLosCursos()
+        {
+            return Connection.DbConnection.Query<CursoModel>("SELECT * From Cursos Order by Id Desc").ToList();
         }
     }
 }

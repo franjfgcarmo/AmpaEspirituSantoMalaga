@@ -13,7 +13,7 @@ namespace Ampa.Frm
         //todo:Deshabilitar el botón de imprimir cuando es un usuario nuevo.
         //Cuando se importe el usuario, llamar al método load, en modo edición e iniciar el usuarioId
         public int? BaseSocioId { get;set; }
-        private readonly TipoEdicion _tipoEdicion;
+        private TipoEdicion _tipoEdicion;
         private bool _suppressAutoSelection;
         private readonly int _cursoId = Program.ActualCurso.Id;
         #region [Eventos de formulario]        
@@ -54,7 +54,8 @@ namespace Ampa.Frm
             {
                 btnImportarSocio.Enabled = cursoService.HayMasDeUnCurso();
             }
-
+            BtnCancelarCambiosAlumnos.Enabled = false;
+            btnCancelarCambiosTutor.Enabled = false;
             dgvAlumno.DefaultCellStyle.ForeColor = Color.Black;
             grdTutor.DefaultCellStyle.ForeColor = Color.Black;
             btnGuardarAlumno.Enabled = false;
@@ -83,6 +84,8 @@ namespace Ampa.Frm
                     CambiaEstadoCamposSocios(false);
                     BtnEditarSocio.Enabled = true;
                     BtnGuardarSocio.Enabled = false;
+                    btnImportarSocio.Enabled = false;
+                    btnImprimir.Enabled = true;
                     break;
                 case TipoEdicion.Nuevo:
                     CambiaEstadoCamposTutor(true);
@@ -90,13 +93,16 @@ namespace Ampa.Frm
                     CambiaEstadoCamposSocios(true);
                     btnNuevoAlumno.Enabled = false;
                     btnEditarAlumno.Enabled = false;
-                    btnGuardarAlumno.Enabled = true
-;
+                    btnGuardarAlumno.Enabled = true;
                     btnNuevoTutor.Enabled = false;
                     btnEditarTutor.Enabled = false;
                     BtnGuardarSocio.Enabled = true;
                     BtnEditarSocio.Enabled = false;
                     BtnGuardarSocio.Enabled = true;
+                    btnImprimir.Enabled = false;
+                    btnEliminarSocio.Enabled = false;
+                    BtnEliminarTutor.Enabled = false;
+                    BtnEliminarAlumno.Enabled = false;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -106,11 +112,74 @@ namespace Ampa.Frm
         private void FrmSocio_FormClosed(object sender, FormClosedEventArgs e)
         {
             //TODO: NO SE PUEDE CERRAR SI ESTÁ EN ESTADO NUEVO
+            using (var service = TutorService.GetInstance())
+            {
+                service.ComprobarTutorPrincipal(BaseSocioId.Value, _cursoId);
+            }
         }
 
         #endregion
 
         #region [Eventos de socios]
+        private void btnBorrarSocio_Click(object sender, EventArgs e)
+        {
+            var resultMessage = MessageBox.Show(@"Va a eliminar todos los datos del socio, ¿Está seguro?",
+                @"Eliminar socio",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (resultMessage != DialogResult.Yes) return;
+            bool result;
+            using (var service = SocioService.GetInstance())
+            {
+                result = service.EliminarSocio(BaseSocioId.Value, _cursoId);
+            }
+            if (result)
+            {
+                MessageBox.Show(@"El socio ha sido eliminado correctamente",
+                    @"Eliminar socio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(@"Ha ocurrido un error al eliminar el socio",
+                  @"Eliminar socio",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void grdImportarSocios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (_suppressAutoSelection) return;
+            var dvg = (DataGridView)sender;
+            var socioId = 0;
+            var cursoId = 0;
+            if (dvg.CurrentRow != null)
+            {
+                var row = dvg.CurrentRow;
+                socioId = int.Parse(row.Cells["SocioIdTutorAImportar"].Value.ToString());
+                cursoId = int.Parse(row.Cells["CursoIdTutorAImportar"].Value.ToString());
+            }
+            if (socioId == 0 || cursoId == 0) return;
+
+
+            bool result;
+            using (var socioService = SocioService.GetInstance())
+            {
+                result = socioService.ImportarSocio(BaseSocioId.Value, _cursoId, socioId, cursoId);
+            }
+            if (result)
+                MessageBox.Show(@"Socio importado correctamente", @"Información", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+            pnlImportarSocio.Visible = false;
+            pnlTutores.Location.Offset(pnlTutores.Location.X, pnlTutores.Location.Y - pnlImportarSocio.Height);
+            pnlAlumnos.Location.Offset(pnlAlumnos.Location.X, pnlAlumnos.Location.Y - pnlImportarSocio.Height);
+            pnlPie.Location.Offset(pnlPie.Location.X, pnlPie.Location.Y - pnlImportarSocio.Height);
+            Height = Height - pnlImportarSocio.Height;
+            _tipoEdicion = TipoEdicion.Edicion;
+            FrmSocio_Load(null, null);
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             var txt = ((TextBox)sender).Text;
@@ -126,30 +195,7 @@ namespace Ampa.Frm
             _suppressAutoSelection = false;
         }
 
-        private void grdImportarSocios_SelectionChanged(object sender, EventArgs e)
-        {
-            if (_suppressAutoSelection) return;
-              var dvg = (DataGridView)sender;
-            var socioId = 0;
-            var cursoId = 0;
-            if (dvg.CurrentRow != null)
-            {
-                var row = dvg.CurrentRow;
-                socioId = int.Parse(row.Cells["SocioIdTutorAImportar"].Value.ToString());
-                cursoId = int.Parse(row.Cells["CursoIdTutorAImportar"].Value.ToString());
-            }
-            if (socioId == 0||cursoId==0) return;
-            
-            
-            bool result;
-            using (var socioService = SocioService.GetInstance())
-            {
-                result = socioService.ImportarSocio(BaseSocioId.Value, _cursoId,socioId,cursoId);
-            }
-            if(result)
-            MessageBox.Show(@"Socio importado correctamente", @"Información", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-        }
+
         private void CambiaEstadoCamposSocios(bool estado)
         {
             txtObservaciones.Enabled = estado;
@@ -179,6 +225,7 @@ namespace Ampa.Frm
             grdImportarSocios.DataSource = tutores;
             grdImportarSocios.Refresh();
             _suppressAutoSelection = false;
+            textBox2.Focus();
         }
 
         private void BtnEditarSocio_Click(object sender, EventArgs e)
@@ -236,6 +283,34 @@ namespace Ampa.Frm
             btnGuardarAlumno.Enabled = false;
         }
 
+        private void BtnEliminarAlumno_Click(object sender, EventArgs e)
+        {
+            var resultMessage = MessageBox.Show(@"Va a eliminar el Alumno ¿Está seguro?",
+                @"Eliminar Alumno",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (resultMessage != DialogResult.Yes) return;
+            bool result;
+            int alumnoId;
+            var resultId = int.TryParse(TxtAlumnoId.Text, out alumnoId);
+            using (var service = AlumnoService.GetInstance())
+            {
+                result = service.EliminarAlumno(alumnoId);
+            }
+            if (result)
+            {
+                MessageBox.Show(@"El Alumno ha sido eliminado correctamente",
+                    @"Eliminar Alumno",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(@"Ha ocurrido un error al intentar eliminar el Alumno",
+               @"Eliminar Alumno",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            RefrescarGridAlumno();
+        }
+
         private void btnNuevoAlumno_Click(object sender, EventArgs e)
         {
             txtNombreAlumno.Focus();
@@ -243,7 +318,9 @@ namespace Ampa.Frm
             CambiaEstadoCamposAlumno(true);
             btnEditarAlumno.Enabled = false;
             btnNuevoAlumno.Enabled = false;
+            BtnEliminarAlumno.Enabled = false;
             btnGuardarAlumno.Enabled = true;
+            BtnCancelarCambiosAlumnos.Enabled = true;
         }
 
         private void btnEditarAlumno_Click(object sender, EventArgs e)
@@ -252,7 +329,9 @@ namespace Ampa.Frm
             CambiaEstadoCamposAlumno(true);
             btnEditarAlumno.Enabled = false;
             btnNuevoAlumno.Enabled = false;
+            BtnEliminarAlumno.Enabled = false;
             btnGuardarAlumno.Enabled = true;
+            BtnCancelarCambiosAlumnos.Enabled = true;
         }
 
         private void btnGuardarAlumno_Click(object sender, EventArgs e)
@@ -303,6 +382,8 @@ namespace Ampa.Frm
             btnEditarAlumno.Enabled = true;
             btnNuevoAlumno.Enabled = true;
             btnGuardarAlumno.Enabled = false;
+            BtnEliminarAlumno.Enabled = true;
+            BtnCancelarCambiosAlumnos.Enabled = false;
         }
 
         private void LimpiarCamposAlumno()
@@ -354,7 +435,33 @@ namespace Ampa.Frm
             btnNuevoTutor.Enabled = true;
             btnGuardarTutor.Enabled = false;
         }
-
+        private void BtnEliminarTutor_Click(object sender, EventArgs e)
+        {
+            var resultMessage = MessageBox.Show(@"Va a eliminar el tutor ¿Está seguro?",
+                           @"Eliminar tutor",
+                           MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (resultMessage != DialogResult.Yes) return;
+            bool result;
+            int tutorId;
+            var resultId = int.TryParse(txtTutorId.Text, out tutorId);
+            using (var service = TutorService.GetInstance())
+            {
+                result = service.EliminarTutor(tutorId);
+            }
+            if (result)
+            {
+                MessageBox.Show(@"El tutor ha sido eliminado correctamente",
+                    @"Eliminar tutor",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(@"Ha ocurrido un error al intentar eliminar el tutor",
+               @"Eliminar tutor",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            RefrescarGridTutor();
+        }
         private void btnGuardarTutor_Click(object sender, EventArgs e)
         {
             int tutorId;
@@ -392,7 +499,9 @@ namespace Ampa.Frm
             CambiaEstadoCamposTutor(true);
             btnEditarTutor.Enabled = false;
             btnNuevoTutor.Enabled = false;
+            BtnEliminarTutor.Enabled = false;
             btnGuardarTutor.Enabled = true;
+            btnCancelarCambiosTutor.Enabled = true;
         }
 
         private void btnEditarTutor_Click_1(object sender, EventArgs e)
@@ -400,8 +509,10 @@ namespace Ampa.Frm
             txtNombreTutor.Focus();
             btnEditarTutor.Enabled = false;
             btnNuevoTutor.Enabled = false;
+            BtnEliminarTutor.Enabled = false;
             btnGuardarTutor.Enabled = true;
             CambiaEstadoCamposTutor(true);
+            btnCancelarCambiosTutor.Enabled = true;
         }
 
         #endregion
@@ -446,8 +557,31 @@ namespace Ampa.Frm
             btnEditarTutor.Enabled = true;
             btnNuevoTutor.Enabled = true;
             btnGuardarTutor.Enabled = false;
+            BtnEliminarTutor.Enabled = true;
+            btnCancelarCambiosTutor.Enabled = false;
         }
 
         #endregion        
+
+        private void btnCancelarCambiosTutor_Click(object sender, EventArgs e)
+        {
+            btnGuardarTutor.Enabled = false;
+            btnEditarTutor.Enabled = true;
+            btnNuevoTutor.Enabled = true;
+            btnCancelarCambiosTutor.Enabled = false;
+            BtnEliminarTutor.Enabled = true;
+        }
+
+        private void BtnCancelarCambiosAlumnos_Click(object sender, EventArgs e)
+        {
+            btnGuardarAlumno.Enabled = false;
+            btnEditarAlumno.Enabled = true;
+            btnNuevoAlumno.Enabled = true;
+            BtnCancelarCambiosAlumnos.Enabled = false;
+            BtnEliminarAlumno.Enabled = true;
+        }
+
+       
+      
     }
 }

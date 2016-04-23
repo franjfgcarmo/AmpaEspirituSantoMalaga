@@ -34,25 +34,29 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.NombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CursoIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocioIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbmCurso = new System.Windows.Forms.ComboBox();
             this.lblCurso = new System.Windows.Forms.Label();
             this.btnNuevoCurso = new Ampa.Control.CustomButton();
             this.btnNuevoSocio = new Ampa.Control.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CursoIdTutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocioId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Movil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EsPrincipal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPrincipal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -84,6 +88,7 @@
             this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreAlumno,
+            this.CursoIdAlumno,
             this.IdAlumno,
             this.SocioIdAlumno,
             this.ApellidoAlumno,
@@ -107,6 +112,14 @@
             this.NombreAlumno.Name = "NombreAlumno";
             this.NombreAlumno.ReadOnly = true;
             this.NombreAlumno.Width = 200;
+            // 
+            // CursoIdAlumno
+            // 
+            this.CursoIdAlumno.DataPropertyName = "CursoId";
+            this.CursoIdAlumno.HeaderText = "CursoIdAlumno";
+            this.CursoIdAlumno.Name = "CursoIdAlumno";
+            this.CursoIdAlumno.ReadOnly = true;
+            this.CursoIdAlumno.Visible = false;
             // 
             // IdAlumno
             // 
@@ -147,6 +160,7 @@
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.CursoIdTutor,
             this.SocioId,
             this.Nombre,
             this.Apellidos,
@@ -171,6 +185,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cbmCurso);
             this.panel1.Controls.Add(this.lblCurso);
             this.panel1.Controls.Add(this.btnNuevoCurso);
             this.panel1.Controls.Add(this.btnNuevoSocio);
@@ -183,12 +199,31 @@
             this.panel1.Size = new System.Drawing.Size(1148, 55);
             this.panel1.TabIndex = 8;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(935, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(191, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Cambiar de curso académico";
+            // 
+            // cbmCurso
+            // 
+            this.cbmCurso.FormattingEnabled = true;
+            this.cbmCurso.Location = new System.Drawing.Point(935, 26);
+            this.cbmCurso.Name = "cbmCurso";
+            this.cbmCurso.Size = new System.Drawing.Size(201, 24);
+            this.cbmCurso.TabIndex = 4;
+            this.cbmCurso.SelectedIndexChanged += new System.EventHandler(this.cbmCurso_SelectedIndexChanged);
+            // 
             // lblCurso
             // 
             this.lblCurso.AutoSize = true;
             this.lblCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurso.ForeColor = System.Drawing.Color.White;
-            this.lblCurso.Location = new System.Drawing.Point(761, 13);
+            this.lblCurso.Location = new System.Drawing.Point(719, 13);
             this.lblCurso.Name = "lblCurso";
             this.lblCurso.Size = new System.Drawing.Size(192, 25);
             this.lblCurso.TabIndex = 3;
@@ -202,7 +237,7 @@
             this.btnNuevoCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoCurso.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoCurso.Location = new System.Drawing.Point(614, 4);
+            this.btnNuevoCurso.Location = new System.Drawing.Point(594, 4);
             this.btnNuevoCurso.Name = "btnNuevoCurso";
             this.btnNuevoCurso.Size = new System.Drawing.Size(117, 39);
             this.btnNuevoCurso.TabIndex = 2;
@@ -218,7 +253,7 @@
             this.btnNuevoSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoSocio.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoSocio.Location = new System.Drawing.Point(491, 4);
+            this.btnNuevoSocio.Location = new System.Drawing.Point(475, 4);
             this.btnNuevoSocio.Name = "btnNuevoSocio";
             this.btnNuevoSocio.Size = new System.Drawing.Size(117, 39);
             this.btnNuevoSocio.TabIndex = 1;
@@ -230,7 +265,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(6, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 17);
             this.label1.TabIndex = 1;
@@ -238,7 +273,7 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(240, 12);
+            this.txtBusqueda.Location = new System.Drawing.Point(228, 12);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(245, 23);
             this.txtBusqueda.TabIndex = 0;
@@ -252,6 +287,14 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             this.Id.Width = 50;
+            // 
+            // CursoIdTutor
+            // 
+            this.CursoIdTutor.DataPropertyName = "CursoId";
+            this.CursoIdTutor.HeaderText = "CursoIdTutor";
+            this.CursoIdTutor.Name = "CursoIdTutor";
+            this.CursoIdTutor.ReadOnly = true;
+            this.CursoIdTutor.Visible = false;
             // 
             // SocioId
             // 
@@ -307,6 +350,8 @@
             this.EsPrincipal.HeaderText = "Tutor Principal";
             this.EsPrincipal.Name = "EsPrincipal";
             this.EsPrincipal.ReadOnly = true;
+            this.EsPrincipal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EsPrincipal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmSocios
             // 
@@ -339,20 +384,24 @@
         private Control.CustomButton btnNuevoSocio;
         private Control.CustomButton btnNuevoCurso;
         private System.Windows.Forms.Label lblCurso;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbmCurso;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdTutor;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocioId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Movil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EsPrincipal;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn EsPrincipal;
         
 
     }

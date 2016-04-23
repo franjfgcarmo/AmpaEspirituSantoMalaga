@@ -143,6 +143,9 @@
     <Compile Include="Services\SocioService.cs" />
     <Compile Include="Services\TutorService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <EmbeddedResource Include="Control\CustomButton.resx">
+      <DependentUpon>CustomButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
     </EmbeddedResource>

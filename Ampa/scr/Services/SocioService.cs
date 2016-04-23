@@ -84,19 +84,19 @@ namespace Ampa.Services
                     }
                     catch (Exception ex)
                     {
-                        var queryBorradoSocio = string.Format("DELETE * FROM " +
-                                                         "Alumnos WHERE SocioId = {0} AND cursoId = {1}",
+                        var queryBorradoTutor = string.Format("DELETE * FROM " +
+                                                         "Tutores WHERE SocioId = {0} AND cursoId = {1}",
                        actualSocioId, actualCursoId);
-                        Connection.Execute(queryBorradoSocio);
+                        Connection.Execute(queryBorradoTutor);
                         MessageBox.Show(ex.Message); 
                     }
                 }
                 catch (Exception ex)
                 {
-                    var queryBorradoAlumno = string.Format("DELETE * FROM " +
+                    var queryBorradoSocios = string.Format("DELETE * FROM " +
                                                          "CursosSocios WHERE SocioId = {0} AND cursoId = {1}",
                        actualSocioId, actualCursoId);
-                    Connection.Execute(queryBorradoAlumno);
+                    Connection.Execute(queryBorradoSocios);
                     MessageBox.Show(ex.Message);
                     return false;
                 }
@@ -116,6 +116,32 @@ namespace Ampa.Services
             var socioId = Connection.DbConnection.Query<int>(querySocioId).FirstOrDefault() + 1;
 
             return socioId;
+        }
+
+        public bool EliminarSocio(int socioId, int cursoId)
+        {
+            try
+            {
+                var queryBorradoAlumno = string.Format("DELETE * FROM " +
+                                                           "Alumnos WHERE SocioId = {0} AND cursoId = {1}",
+                         socioId, cursoId);
+                Connection.Execute(queryBorradoAlumno);
+
+                var queryBorradoTutor = string.Format("DELETE * FROM " +
+                                                               "Tutores WHERE SocioId = {0} AND cursoId = {1}",
+                             socioId, cursoId);
+                Connection.Execute(queryBorradoTutor);
+                var queryBorradoSocio = string.Format("DELETE * FROM " +
+                                                                "CursosSocios WHERE SocioId = {0} AND cursoId = {1}",
+                              socioId, cursoId);
+                Connection.Execute(queryBorradoSocio);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
