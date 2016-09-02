@@ -15,3 +15,33 @@ Opción de Nuevo:
 Permitirá importar un usuario, buscará por nombre y apellidos. Hacer doble click o añadir. Permitirá la edición de todos los datos.
 Nuevo desde Cero. Se rellenan los datos y permite añadir tutores y alumnos. Los alumnos se podrán añadir e eliminar.
 Opción de editar: Permitirá los mismo que la opción nuevo pero sin la posibilidad de importar usuario.
+
+
+Listados
+
+Socios por grupo. Infantil, primaria
+Socios por clase.
+
+Alumnos por grupo
+Alumnos por clase.
+
+Padres que pagan con banco
+Socios con algo escrito en observaciones.
+
+Listado de todos los correos.
+Todos los listados de socios
+Todos los listados de alumnos.
+
+Infantil
+3 a 6
+Primaria
+6 a 12
+Secundaria
+12 a 16
+
+Para comprobar si existe una tabla:
+SELECT Dcount("*", "MSysObjects","(([Name]='Educaciond') AND ([Type]=1))") as [Switch];
+
+http://stackoverflow.com/questions/32260/sending-email-in-net-through-gmail
+http://stackoverflow.com/questions/29465096/how-to-send-an-e-mail-with-c-sharp-through-gmail
+http://stackoverflow.com/questions/704636/sending-email-through-gmail-smtp-server-with-c-sharp

@@ -84,11 +84,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm\FrmInformes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmInformes.Designer.cs">
+      <DependentUpon>FrmInformes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm\FrmReport.Designer.cs">
       <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmTutoresReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmTutoresReport.Designer.cs">
+      <DependentUpon>FrmTutoresReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\AlumnosModel.cs" />
     <Compile Include="Modelo\CursoModel.cs" />
@@ -149,6 +161,9 @@
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmInformes.resx">
+      <DependentUpon>FrmInformes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +176,9 @@
     <EmbeddedResource Include="Frm\FrmBase.resx">
       <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmTutoresReport.resx">
+      <DependentUpon>FrmTutoresReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -171,6 +189,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Tutores.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Ficha.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

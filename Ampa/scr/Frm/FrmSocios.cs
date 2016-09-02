@@ -197,7 +197,13 @@ namespace Ampa.Frm
             }
             _countForm = fc.Count;
         }
-
+        private void btnInformes_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmInformes();
+            frm.Show();
+        }
         #endregion
+
+       
     }
 }
