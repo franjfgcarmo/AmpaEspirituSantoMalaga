@@ -29,17 +29,18 @@ namespace Ampa.Services
             var query = string.Format("Update Alumnos Set " +
                                       "Nombre = '{0}'," +
                                       "Apellidos ='{1}'," +
-                                      "Curso = '{2}'" +
-                                      "WHERE Id = {3}", alumno.Nombre, alumno.Apellidos, alumno.Curso, alumno.Id);
+                                      "Curso = '{2}'," +
+                                      "GrupoId = {3} " +
+                                      "WHERE Id = {4}", alumno.Nombre, alumno.Apellidos, alumno.Curso, alumno.GrupoId,alumno.Id);
             return Connection.Execute(query) > 0;
         }
 
         public bool Insert(AlumnoModel alumno)
         {
-            var query = string.Format("INSERT INTO Alumnos (Nombre,Apellidos, Curso, SocioId, CursoId)" +
-                                      "VALUES ('{0}','{1}','{2}',{3},{4})", alumno.Nombre, alumno.Apellidos,
+            var query = string.Format("INSERT INTO Alumnos (Nombre,Apellidos, Curso, SocioId, CursoId,GrupoId)" +
+                                      "VALUES ('{0}','{1}','{2}',{3},{4},{5})", alumno.Nombre, alumno.Apellidos,
                 alumno.Curso,
-                alumno.SocioId, alumno.CursoId);
+                alumno.SocioId, alumno.CursoId, alumno.GrupoId);
             return Connection.Execute(query) > 0;
         }
 

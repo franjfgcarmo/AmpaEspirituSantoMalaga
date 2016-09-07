@@ -109,6 +109,7 @@
             this.radioButton1.Size = new System.Drawing.Size(98, 21);
             this.radioButton1.TabIndex = 9;
             this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "3";
             this.radioButton1.Text = "Secundaria";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -120,6 +121,7 @@
             this.radioButton5.Size = new System.Drawing.Size(78, 21);
             this.radioButton5.TabIndex = 8;
             this.radioButton5.TabStop = true;
+            this.radioButton5.Tag = "2";
             this.radioButton5.Text = "Primaria";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
@@ -131,6 +133,7 @@
             this.radioButton6.Size = new System.Drawing.Size(67, 21);
             this.radioButton6.TabIndex = 6;
             this.radioButton6.TabStop = true;
+            this.radioButton6.Tag = "1";
             this.radioButton6.Text = "Infantil";
             this.radioButton6.UseVisualStyleBackColor = true;
             // 
@@ -159,6 +162,7 @@
             this.rdbSecundaria.Size = new System.Drawing.Size(98, 21);
             this.rdbSecundaria.TabIndex = 9;
             this.rdbSecundaria.TabStop = true;
+            this.rdbSecundaria.Tag = "3";
             this.rdbSecundaria.Text = "Secundaria";
             this.rdbSecundaria.UseVisualStyleBackColor = true;
             // 
@@ -170,6 +174,7 @@
             this.radioButton7.Size = new System.Drawing.Size(78, 21);
             this.radioButton7.TabIndex = 8;
             this.radioButton7.TabStop = true;
+            this.radioButton7.Tag = "2";
             this.radioButton7.Text = "Primaria";
             this.radioButton7.UseVisualStyleBackColor = true;
             // 
@@ -181,6 +186,7 @@
             this.rdbInfantil.Size = new System.Drawing.Size(67, 21);
             this.rdbInfantil.TabIndex = 6;
             this.rdbInfantil.TabStop = true;
+            this.rdbInfantil.Tag = "1";
             this.rdbInfantil.Text = "Infantil";
             this.rdbInfantil.UseVisualStyleBackColor = true;
             // 

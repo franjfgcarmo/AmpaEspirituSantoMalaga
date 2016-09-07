@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm\FrmAlumnosReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmAlumnosReport.Designer.cs">
+      <DependentUpon>FrmAlumnosReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\FrmInformes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,7 @@
     <Compile Include="Modelo\AlumnosModel.cs" />
     <Compile Include="Modelo\CursoModel.cs" />
     <Compile Include="Modelo\CursosSociosModel.cs" />
+    <Compile Include="Modelo\GrupoModel.cs" />
     <Compile Include="Modelo\SocioModel.cs" />
     <Compile Include="Modelo\TipoEdicion.cs" />
     <Compile Include="Modelo\TutorModel.cs" />
@@ -151,6 +158,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlumnosService.cs" />
     <Compile Include="Services\CursoService.cs" />
+    <Compile Include="Services\GrupoService.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\SocioService.cs" />
     <Compile Include="Services\TutorService.cs" />
@@ -160,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmAlumnosReport.resx">
+      <DependentUpon>FrmAlumnosReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmInformes.resx">
       <DependentUpon>FrmInformes.cs</DependentUpon>
@@ -189,6 +200,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Alumnos.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Tutores.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

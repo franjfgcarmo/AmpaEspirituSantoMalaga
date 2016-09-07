@@ -1,6 +1,6 @@
 ﻿namespace Ampa.Frm
 {
-    partial class FrmTutoresReport
+    partial class FrmAlumnosReport
     {
         /// <summary>
         /// Required designer variable.
@@ -39,24 +39,25 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(853, 470);
-            this.reportViewer1.TabIndex = 1;
+            this.reportViewer1.Size = new System.Drawing.Size(379, 321);
+            this.reportViewer1.TabIndex = 2;
             // 
             // ampaDataSet1
             // 
             this.ampaDataSet1.DataSetName = "AmpaDataSet";
             this.ampaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // FrmTutoresReport
+            // FrmAlumnosReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 470);
+            this.ClientSize = new System.Drawing.Size(379, 321);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "FrmTutoresReport";
-            this.Text = "Listados de Tutores";
+            this.Name = "FrmAlumnosReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Listado de Alumnos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmTutoresReport_Load);
+            this.Load += new System.EventHandler(this.FrmAlumnosReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ampaDataSet1)).EndInit();
             this.ResumeLayout(false);
 

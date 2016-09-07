@@ -102,6 +102,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.chkPagaPorBanco = new System.Windows.Forms.CheckBox();
+            this.cmbGrupo = new System.Windows.Forms.ComboBox();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -131,6 +132,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbGrupo);
             this.panel1.Controls.Add(this.BtnCancelarCambiosAlumnos);
             this.panel1.Controls.Add(this.BtnEliminarAlumno);
             this.panel1.Controls.Add(this.TxtAlumnoId);
@@ -158,7 +160,7 @@
             this.BtnCancelarCambiosAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarCambiosAlumnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarCambiosAlumnos.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelarCambiosAlumnos.Location = new System.Drawing.Point(104, 77);
+            this.BtnCancelarCambiosAlumnos.Location = new System.Drawing.Point(323, 77);
             this.BtnCancelarCambiosAlumnos.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCancelarCambiosAlumnos.Name = "BtnCancelarCambiosAlumnos";
             this.BtnCancelarCambiosAlumnos.Size = new System.Drawing.Size(135, 28);
@@ -175,7 +177,7 @@
             this.BtnEliminarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarAlumno.ForeColor = System.Drawing.Color.White;
-            this.BtnEliminarAlumno.Location = new System.Drawing.Point(352, 47);
+            this.BtnEliminarAlumno.Location = new System.Drawing.Point(169, 77);
             this.BtnEliminarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.BtnEliminarAlumno.Name = "BtnEliminarAlumno";
             this.BtnEliminarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -201,7 +203,7 @@
             this.btnNuevoAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoAlumno.Location = new System.Drawing.Point(2, 47);
+            this.btnNuevoAlumno.Location = new System.Drawing.Point(220, 47);
             this.btnNuevoAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevoAlumno.Name = "btnNuevoAlumno";
             this.btnNuevoAlumno.Size = new System.Drawing.Size(117, 28);
@@ -218,7 +220,7 @@
             this.btnGuardarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarAlumno.Location = new System.Drawing.Point(236, 47);
+            this.btnGuardarAlumno.Location = new System.Drawing.Point(5, 77);
             this.btnGuardarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnGuardarAlumno.Name = "btnGuardarAlumno";
             this.btnGuardarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -235,7 +237,7 @@
             this.btnEditarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnEditarAlumno.Location = new System.Drawing.Point(119, 47);
+            this.btnEditarAlumno.Location = new System.Drawing.Point(340, 47);
             this.btnEditarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditarAlumno.Name = "btnEditarAlumno";
             this.btnEditarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -992,6 +994,14 @@
             this.chkPagaPorBanco.Text = "Pagado por banco";
             this.chkPagaPorBanco.UseVisualStyleBackColor = true;
             // 
+            // cmbGrupo
+            // 
+            this.cmbGrupo.FormattingEnabled = true;
+            this.cmbGrupo.Location = new System.Drawing.Point(5, 49);
+            this.cmbGrupo.Name = "cmbGrupo";
+            this.cmbGrupo.Size = new System.Drawing.Size(197, 24);
+            this.cmbGrupo.TabIndex = 17;
+            // 
             // FrmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1099,5 +1109,6 @@
         private Control.CustomButton BtnEliminarAlumno;
         private Control.CustomButton btnCancelarCambiosTutor;
         private Control.CustomButton BtnCancelarCambiosAlumnos;
+        private System.Windows.Forms.ComboBox cmbGrupo;
     }
 }
