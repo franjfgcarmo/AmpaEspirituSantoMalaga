@@ -67,7 +67,7 @@ namespace Ampa.Services
                                            "WHERE  SocioId = {2} AND CursoId = {3}", actualSocioId, actualCursoId, anteriorSocioId,
                 anteriorCursoId);
             var queryAlumnos = string.Format("INSERT INTO Alumnos " +
-                                             "SELECT Nombre, Apellidos, Curso, {0} AS SocioId, {1} AS CursoId FROM Alumnos " +
+                                             "SELECT Nombre, Apellidos, Curso, {0} AS SocioId, {1} AS CursoId, GrupoId FROM Alumnos " +
                                              "WHERE  SocioId = {2} AND cursoId = {3}", actualSocioId, actualCursoId,
                 anteriorSocioId,
                 anteriorCursoId);
