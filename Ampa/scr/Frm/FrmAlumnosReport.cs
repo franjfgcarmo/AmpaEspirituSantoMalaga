@@ -28,7 +28,7 @@ namespace Ampa.Frm
             var dsTutores =
               Program.DbConnection.InitDataAdapter(
                   string.Format(@"Select *  From Alumnos 
-                                        WHERE CursoId = {0} {1} Order by SocioId",
+                                        WHERE CursoId = {0} {1} Order by Apellidos",
                       Program.ActualCurso.Id, _where));
             reportViewer1.ProcessingMode = ProcessingMode.Local;
 

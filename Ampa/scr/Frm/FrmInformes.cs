@@ -109,12 +109,12 @@ namespace Ampa.Frm
                 }
                 if (rdbSociosObservaciones.Checked)
                 {
-                    var frm = new FrmTutoresReport("AND Observaciones IS NOT NULL");
+                    var frm = new FrmTutoresReport(@"AND Observaciones IS NOT NULL AND Observaciones <>"""" AND Observaciones <>"" """);
                     frm.Show();
                 }
                 if (rdbCorreos.Checked)
                 {
-                    var frm = new FrmTutoresReport("AND Email IS NOT NULL");
+                    var frm = new FrmTutoresReport(@"AND Email IS NOT NULL AND Email <>"""" AND Email <>"" """);
                     frm.Show();
                 }
 

@@ -48,8 +48,9 @@ namespace Ampa.Frm
 
         private void cbmCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_suppressAutoSelection) return;
+            if (_suppressAutoSelection ) return;
             var cbm = (ComboBox) sender;
+            if (cbm.DataSource == null) return;
             cambioCurso = true;
             var curso = (CursoModel) cbm.SelectedItem;
             Program.ActualCurso = curso;

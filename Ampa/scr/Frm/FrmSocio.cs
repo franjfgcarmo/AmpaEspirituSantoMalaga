@@ -78,8 +78,12 @@ namespace Ampa.Frm
                     CambiaEstadoCamposTutor(false);
                     CambiaEstadoCamposAlumno(false);
                     _suppressAutoSelection = false;
-                    dgvAlumno.Rows[0].Selected = true;
-                    dgvAlumno_SelectionChanged(dgvAlumno, null);
+                    if (dgvAlumno.Rows.Count > 0)
+                    {
+                        dgvAlumno.Rows[0].Selected = true;
+                        dgvAlumno_SelectionChanged(dgvAlumno, null);
+                    }
+                    
                     grdTutor.Rows[0].Selected = true;
                     grdTutor_SelectionChanged_1(grdTutor, null);
                     CambiaEstadoCamposSocios(false);
@@ -251,6 +255,7 @@ namespace Ampa.Frm
             BtnEditarSocio.Enabled = true;
             BtnGuardarSocio.Enabled = false;
             CambiaEstadoCamposSocios(false);
+            Close();
         }
         #endregion
 
@@ -379,7 +384,11 @@ namespace Ampa.Frm
             dgvAlumno.DataSource = alumnos;
             dgvAlumno.Refresh();
             _suppressAutoSelection = false;
-            dgvAlumno.Rows[0].Selected = true;
+            if (dgvAlumno.Rows.Count > 0)
+            {
+             dgvAlumno.Rows[0].Selected = true;   
+            }
+            
             dgvAlumno_SelectionChanged(dgvAlumno, null);
             CambiaEstadoCamposTutor(false);
             btnEditarAlumno.Enabled = true;
