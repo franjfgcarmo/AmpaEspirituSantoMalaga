@@ -207,6 +207,7 @@
     <EmbeddedResource Include="Report\Alumnos.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Tarjeta.rdlc" />
     <EmbeddedResource Include="Report\Tutores.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

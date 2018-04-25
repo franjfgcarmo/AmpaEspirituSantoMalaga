@@ -41,11 +41,11 @@ namespace Ampa.Frm
             var orderBy = string.Empty;
             if (rdbNombre.Checked)
             {
-                orderBy = "Order by 2";
+                orderBy = "Order by (T.Nombre)";
             }
             if (rdbApellidos.Checked)
             {
-                orderBy = "Order by 3";
+                orderBy = "Order by TRIM(T.Apellidos)";
             }
 
             var innerJoin = string.Empty;

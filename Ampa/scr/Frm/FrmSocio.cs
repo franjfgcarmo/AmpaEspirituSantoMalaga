@@ -343,6 +343,11 @@ namespace Ampa.Frm
 
         private void btnGuardarAlumno_Click(object sender, EventArgs e)
         {
+            if(cmbGrupo.SelectedIndex==-1)
+            {
+                MessageBox.Show("Debe seleccionar el grupo.");
+                return;
+            }
             int alumnoId;
             var result = int.TryParse(TxtAlumnoId.Text, out alumnoId);
             using (var service = AlumnoService.GetInstance())
