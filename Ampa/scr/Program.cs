@@ -22,8 +22,9 @@ namespace Ampa
             Application.Run(new FrmAcceso());
             try
             {
+                SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
                 var filePath = AppDomain.CurrentDomain.BaseDirectory + @"AppData\Ampa.mdb";
-                var compactFile = AppDomain.CurrentDomain.BaseDirectory + @"AppData\db1.mdb";
+                var compactFile = AppDomain.CurrentDomain.BaseDirectory + string.Format(@"AppData\db{0}.mdb", DateTime.Now.Ticks);
                 if (File.Exists(filePath))
                 {
                     var db = new DAO.DBEngine();

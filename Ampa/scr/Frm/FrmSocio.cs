@@ -50,6 +50,7 @@ namespace Ampa.Frm
 
         private void FrmSocio_Load(object sender, EventArgs e)
         {
+            CargaGrupo();
             using (var cursoService = CursoService.GetInstance())
             {
                 btnImportarSocio.Enabled = cursoService.HayMasDeUnCurso();
@@ -77,15 +78,19 @@ namespace Ampa.Frm
                     CambiaEstadoCamposTutor(false);
                     CambiaEstadoCamposAlumno(false);
                     _suppressAutoSelection = false;
-                    dgvAlumno.Rows[0].Selected = true;
-                    dgvAlumno_SelectionChanged(dgvAlumno, null);
+                    if (dgvAlumno.Rows.Count > 0)
+                    {
+                        dgvAlumno.Rows[0].Selected = true;
+                        dgvAlumno_SelectionChanged(dgvAlumno, null);
+                    }
+                    
                     grdTutor.Rows[0].Selected = true;
                     grdTutor_SelectionChanged_1(grdTutor, null);
                     CambiaEstadoCamposSocios(false);
                     BtnEditarSocio.Enabled = true;
                     BtnGuardarSocio.Enabled = false;
                     btnImportarSocio.Enabled = false;
-                    btnImprimir.Enabled = true;
+                    btnImprimir.Enabled = true;                    
                     break;
                 case TipoEdicion.Nuevo:
                     CambiaEstadoCamposTutor(true);
@@ -250,6 +255,7 @@ namespace Ampa.Frm
             BtnEditarSocio.Enabled = true;
             BtnGuardarSocio.Enabled = false;
             CambiaEstadoCamposSocios(false);
+            Close();
         }
         #endregion
 
@@ -276,7 +282,8 @@ namespace Ampa.Frm
             txtNombreAlumno.Text = alumno.Nombre;
             txtApellidoAlumno.Text = alumno.Apellidos;
             txtCursoAlumno.Text = alumno.Curso;
-            TxtAlumnoId.Text = alumno.Id.ToString();
+            TxtAlumnoId.Text = alumno.Id.ToString();           
+            cmbGrupo.SelectedValue =alumno.GrupoId ?? 0;            
             CambiaEstadoCamposAlumno(false);
             btnEditarAlumno.Enabled = true;
             btnNuevoAlumno.Enabled = true;
@@ -336,6 +343,11 @@ namespace Ampa.Frm
 
         private void btnGuardarAlumno_Click(object sender, EventArgs e)
         {
+            if(cmbGrupo.SelectedIndex==-1)
+            {
+                MessageBox.Show("Debe seleccionar el grupo.");
+                return;
+            }
             int alumnoId;
             var result = int.TryParse(TxtAlumnoId.Text, out alumnoId);
             using (var service = AlumnoService.GetInstance())
@@ -347,6 +359,7 @@ namespace Ampa.Frm
                     Apellidos = txtApellidoAlumno.Text,
                     Curso = txtCursoAlumno.Text,
                     SocioId = BaseSocioId.Value,
+                    GrupoId = string.IsNullOrWhiteSpace(cmbGrupo.SelectedValue.ToString()) ? (int?)null :int.Parse(cmbGrupo.SelectedValue.ToString()),
                     CursoId=_cursoId
                 };
                 if (result)
@@ -376,7 +389,11 @@ namespace Ampa.Frm
             dgvAlumno.DataSource = alumnos;
             dgvAlumno.Refresh();
             _suppressAutoSelection = false;
-            dgvAlumno.Rows[0].Selected = true;
+            if (dgvAlumno.Rows.Count > 0)
+            {
+             dgvAlumno.Rows[0].Selected = true;   
+            }
+            
             dgvAlumno_SelectionChanged(dgvAlumno, null);
             CambiaEstadoCamposTutor(false);
             btnEditarAlumno.Enabled = true;
@@ -392,6 +409,19 @@ namespace Ampa.Frm
             txtApellidoAlumno.Text = string.Empty;
             txtCursoAlumno.Text = string.Empty;
             TxtAlumnoId.Text = string.Empty;
+            cmbGrupo.DataSource = null;
+            CargaGrupo();
+        }
+
+        private void CargaGrupo()
+        {
+              using (var grupoService = GrupoService.GetInstance())
+            {
+                cmbGrupo.DataSource = new BindingSource(grupoService.ObtenerGrupos(), null);
+                cmbGrupo.DisplayMember = "Name";
+                cmbGrupo.ValueMember = "Id";
+            }
+         
         }
 
         private void CambiaEstadoCamposAlumno(bool estado)
@@ -399,6 +429,7 @@ namespace Ampa.Frm
             txtNombreAlumno.Enabled = estado;
             txtApellidoAlumno.Enabled = estado;
             txtCursoAlumno.Enabled = estado;
+            cmbGrupo.Enabled = estado;
         }
 
         #endregion

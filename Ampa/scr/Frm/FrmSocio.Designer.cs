@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlPie = new System.Windows.Forms.Panel();
+            this.BtnGuardarSocio = new Ampa.Control.CustomButton();
+            this.BtnEditarSocio = new Ampa.Control.CustomButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.chkPagaPorBanco = new System.Windows.Forms.CheckBox();
             this.pnlAlumnos = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbGrupo = new System.Windows.Forms.ComboBox();
             this.BtnCancelarCambiosAlumnos = new Ampa.Control.CustomButton();
             this.BtnEliminarAlumno = new Ampa.Control.CustomButton();
             this.TxtAlumnoId = new System.Windows.Forms.TextBox();
@@ -43,12 +50,6 @@
             this.txtNombreAlumno = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvAlumno = new System.Windows.Forms.DataGridView();
-            this.NombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CursoIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidosAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocioIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTutores = new System.Windows.Forms.GroupBox();
             this.pnlEditTutor = new System.Windows.Forms.Panel();
             this.btnCancelarCambiosTutor = new Ampa.Control.CustomButton();
@@ -96,12 +97,14 @@
             this.btnImprimir = new Ampa.Control.CustomButton();
             this.btnImportarSocio = new Ampa.Control.CustomButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pnlPie = new System.Windows.Forms.Panel();
-            this.BtnGuardarSocio = new Ampa.Control.CustomButton();
-            this.BtnEditarSocio = new Ampa.Control.CustomButton();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtObservaciones = new System.Windows.Forms.TextBox();
-            this.chkPagaPorBanco = new System.Windows.Forms.CheckBox();
+            this.NombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrupoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CursoIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidosAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocioIdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlPie.SuspendLayout();
             this.pnlAlumnos.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumno)).BeginInit();
@@ -111,8 +114,83 @@
             this.pnlImportarSocio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdImportarSocios)).BeginInit();
             this.pnlButton.SuspendLayout();
-            this.pnlPie.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlPie
+            // 
+            this.pnlPie.Controls.Add(this.BtnGuardarSocio);
+            this.pnlPie.Controls.Add(this.BtnEditarSocio);
+            this.pnlPie.Controls.Add(this.label8);
+            this.pnlPie.Controls.Add(this.txtObservaciones);
+            this.pnlPie.Controls.Add(this.chkPagaPorBanco);
+            this.pnlPie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPie.Location = new System.Drawing.Point(0, 529);
+            this.pnlPie.Name = "pnlPie";
+            this.pnlPie.Size = new System.Drawing.Size(836, 71);
+            this.pnlPie.TabIndex = 14;
+            // 
+            // BtnGuardarSocio
+            // 
+            this.BtnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.BtnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnGuardarSocio.FlatAppearance.BorderSize = 2;
+            this.BtnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGuardarSocio.ForeColor = System.Drawing.Color.White;
+            this.BtnGuardarSocio.Location = new System.Drawing.Point(708, 38);
+            this.BtnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnGuardarSocio.Name = "BtnGuardarSocio";
+            this.BtnGuardarSocio.Size = new System.Drawing.Size(120, 28);
+            this.BtnGuardarSocio.TabIndex = 18;
+            this.BtnGuardarSocio.Text = "Guardar";
+            this.BtnGuardarSocio.UseVisualStyleBackColor = false;
+            this.BtnGuardarSocio.Click += new System.EventHandler(this.BtnGuardarSocio_Click);
+            // 
+            // BtnEditarSocio
+            // 
+            this.BtnEditarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
+            this.BtnEditarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnEditarSocio.FlatAppearance.BorderSize = 2;
+            this.BtnEditarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEditarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEditarSocio.ForeColor = System.Drawing.Color.White;
+            this.BtnEditarSocio.Location = new System.Drawing.Point(708, 5);
+            this.BtnEditarSocio.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnEditarSocio.Name = "BtnEditarSocio";
+            this.BtnEditarSocio.Size = new System.Drawing.Size(120, 28);
+            this.BtnEditarSocio.TabIndex = 17;
+            this.BtnEditarSocio.Text = "Editar ";
+            this.BtnEditarSocio.UseVisualStyleBackColor = false;
+            this.BtnEditarSocio.Click += new System.EventHandler(this.BtnEditarSocio_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(42, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Observaciones";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(162, 5);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(543, 60);
+            this.txtObservaciones.TabIndex = 15;
+            // 
+            // chkPagaPorBanco
+            // 
+            this.chkPagaPorBanco.AutoSize = true;
+            this.chkPagaPorBanco.ForeColor = System.Drawing.Color.White;
+            this.chkPagaPorBanco.Location = new System.Drawing.Point(12, 1);
+            this.chkPagaPorBanco.Name = "chkPagaPorBanco";
+            this.chkPagaPorBanco.Size = new System.Drawing.Size(144, 21);
+            this.chkPagaPorBanco.TabIndex = 14;
+            this.chkPagaPorBanco.Text = "Pagado por banco";
+            this.chkPagaPorBanco.UseVisualStyleBackColor = true;
             // 
             // pnlAlumnos
             // 
@@ -131,6 +209,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbGrupo);
             this.panel1.Controls.Add(this.BtnCancelarCambiosAlumnos);
             this.panel1.Controls.Add(this.BtnEliminarAlumno);
             this.panel1.Controls.Add(this.TxtAlumnoId);
@@ -150,6 +229,14 @@
             this.panel1.Size = new System.Drawing.Size(470, 113);
             this.panel1.TabIndex = 10;
             // 
+            // cmbGrupo
+            // 
+            this.cmbGrupo.FormattingEnabled = true;
+            this.cmbGrupo.Location = new System.Drawing.Point(5, 49);
+            this.cmbGrupo.Name = "cmbGrupo";
+            this.cmbGrupo.Size = new System.Drawing.Size(197, 24);
+            this.cmbGrupo.TabIndex = 17;
+            // 
             // BtnCancelarCambiosAlumnos
             // 
             this.BtnCancelarCambiosAlumnos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
@@ -158,7 +245,7 @@
             this.BtnCancelarCambiosAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelarCambiosAlumnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarCambiosAlumnos.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelarCambiosAlumnos.Location = new System.Drawing.Point(104, 77);
+            this.BtnCancelarCambiosAlumnos.Location = new System.Drawing.Point(323, 77);
             this.BtnCancelarCambiosAlumnos.Margin = new System.Windows.Forms.Padding(0);
             this.BtnCancelarCambiosAlumnos.Name = "BtnCancelarCambiosAlumnos";
             this.BtnCancelarCambiosAlumnos.Size = new System.Drawing.Size(135, 28);
@@ -175,7 +262,7 @@
             this.BtnEliminarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEliminarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarAlumno.ForeColor = System.Drawing.Color.White;
-            this.BtnEliminarAlumno.Location = new System.Drawing.Point(352, 47);
+            this.BtnEliminarAlumno.Location = new System.Drawing.Point(169, 77);
             this.BtnEliminarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.BtnEliminarAlumno.Name = "BtnEliminarAlumno";
             this.BtnEliminarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -201,7 +288,7 @@
             this.btnNuevoAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnNuevoAlumno.Location = new System.Drawing.Point(2, 47);
+            this.btnNuevoAlumno.Location = new System.Drawing.Point(220, 47);
             this.btnNuevoAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevoAlumno.Name = "btnNuevoAlumno";
             this.btnNuevoAlumno.Size = new System.Drawing.Size(117, 28);
@@ -218,7 +305,7 @@
             this.btnGuardarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarAlumno.Location = new System.Drawing.Point(236, 47);
+            this.btnGuardarAlumno.Location = new System.Drawing.Point(5, 77);
             this.btnGuardarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnGuardarAlumno.Name = "btnGuardarAlumno";
             this.btnGuardarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -235,7 +322,7 @@
             this.btnEditarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarAlumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarAlumno.ForeColor = System.Drawing.Color.White;
-            this.btnEditarAlumno.Location = new System.Drawing.Point(119, 47);
+            this.btnEditarAlumno.Location = new System.Drawing.Point(340, 47);
             this.btnEditarAlumno.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditarAlumno.Name = "btnEditarAlumno";
             this.btnEditarAlumno.Size = new System.Drawing.Size(117, 28);
@@ -309,6 +396,7 @@
             this.dgvAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlumno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NombreAlumno,
+            this.GrupoId,
             this.CursoIdAlumno,
             this.ApellidosAlumno,
             this.Curso,
@@ -327,54 +415,6 @@
             this.dgvAlumno.Size = new System.Drawing.Size(362, 113);
             this.dgvAlumno.TabIndex = 0;
             this.dgvAlumno.SelectionChanged += new System.EventHandler(this.dgvAlumno_SelectionChanged);
-            // 
-            // NombreAlumno
-            // 
-            this.NombreAlumno.DataPropertyName = "Nombre";
-            this.NombreAlumno.HeaderText = "Nombre";
-            this.NombreAlumno.Name = "NombreAlumno";
-            this.NombreAlumno.ReadOnly = true;
-            this.NombreAlumno.Width = 150;
-            // 
-            // CursoIdAlumno
-            // 
-            this.CursoIdAlumno.DataPropertyName = "CursoId";
-            this.CursoIdAlumno.HeaderText = "CursoIdAlumno";
-            this.CursoIdAlumno.Name = "CursoIdAlumno";
-            this.CursoIdAlumno.ReadOnly = true;
-            this.CursoIdAlumno.Visible = false;
-            // 
-            // ApellidosAlumno
-            // 
-            this.ApellidosAlumno.DataPropertyName = "Apellidos";
-            this.ApellidosAlumno.HeaderText = "Apellidos";
-            this.ApellidosAlumno.Name = "ApellidosAlumno";
-            this.ApellidosAlumno.ReadOnly = true;
-            this.ApellidosAlumno.Width = 160;
-            // 
-            // Curso
-            // 
-            this.Curso.DataPropertyName = "Curso";
-            this.Curso.HeaderText = "Curso";
-            this.Curso.Name = "Curso";
-            this.Curso.ReadOnly = true;
-            this.Curso.Width = 50;
-            // 
-            // SocioIdAlumno
-            // 
-            this.SocioIdAlumno.DataPropertyName = "SocioId";
-            this.SocioIdAlumno.HeaderText = "SocioIdAlumno";
-            this.SocioIdAlumno.Name = "SocioIdAlumno";
-            this.SocioIdAlumno.ReadOnly = true;
-            this.SocioIdAlumno.Visible = false;
-            // 
-            // IdAlumno
-            // 
-            this.IdAlumno.DataPropertyName = "Id";
-            this.IdAlumno.HeaderText = "IdAlumno";
-            this.IdAlumno.Name = "IdAlumno";
-            this.IdAlumno.ReadOnly = true;
-            this.IdAlumno.Visible = false;
             // 
             // pnlTutores
             // 
@@ -916,81 +956,61 @@
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 4;
             // 
-            // pnlPie
+            // NombreAlumno
             // 
-            this.pnlPie.Controls.Add(this.BtnGuardarSocio);
-            this.pnlPie.Controls.Add(this.BtnEditarSocio);
-            this.pnlPie.Controls.Add(this.label8);
-            this.pnlPie.Controls.Add(this.txtObservaciones);
-            this.pnlPie.Controls.Add(this.chkPagaPorBanco);
-            this.pnlPie.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPie.Location = new System.Drawing.Point(0, 529);
-            this.pnlPie.Name = "pnlPie";
-            this.pnlPie.Size = new System.Drawing.Size(836, 71);
-            this.pnlPie.TabIndex = 14;
+            this.NombreAlumno.DataPropertyName = "Nombre";
+            this.NombreAlumno.HeaderText = "Nombre";
+            this.NombreAlumno.Name = "NombreAlumno";
+            this.NombreAlumno.ReadOnly = true;
+            this.NombreAlumno.Width = 150;
             // 
-            // BtnGuardarSocio
+            // GrupoId
             // 
-            this.BtnGuardarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.BtnGuardarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnGuardarSocio.FlatAppearance.BorderSize = 2;
-            this.BtnGuardarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGuardarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarSocio.ForeColor = System.Drawing.Color.White;
-            this.BtnGuardarSocio.Location = new System.Drawing.Point(708, 38);
-            this.BtnGuardarSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnGuardarSocio.Name = "BtnGuardarSocio";
-            this.BtnGuardarSocio.Size = new System.Drawing.Size(120, 28);
-            this.BtnGuardarSocio.TabIndex = 18;
-            this.BtnGuardarSocio.Text = "Guardar";
-            this.BtnGuardarSocio.UseVisualStyleBackColor = false;
-            this.BtnGuardarSocio.Click += new System.EventHandler(this.BtnGuardarSocio_Click);
+            this.GrupoId.DataPropertyName = "GrupoId";
+            this.GrupoId.HeaderText = "GrupoId";
+            this.GrupoId.Name = "GrupoId";
+            this.GrupoId.ReadOnly = true;
+            this.GrupoId.Visible = false;
             // 
-            // BtnEditarSocio
+            // CursoIdAlumno
             // 
-            this.BtnEditarSocio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(255)))));
-            this.BtnEditarSocio.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnEditarSocio.FlatAppearance.BorderSize = 2;
-            this.BtnEditarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEditarSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEditarSocio.ForeColor = System.Drawing.Color.White;
-            this.BtnEditarSocio.Location = new System.Drawing.Point(708, 5);
-            this.BtnEditarSocio.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnEditarSocio.Name = "BtnEditarSocio";
-            this.BtnEditarSocio.Size = new System.Drawing.Size(120, 28);
-            this.BtnEditarSocio.TabIndex = 17;
-            this.BtnEditarSocio.Text = "Editar ";
-            this.BtnEditarSocio.UseVisualStyleBackColor = false;
-            this.BtnEditarSocio.Click += new System.EventHandler(this.BtnEditarSocio_Click);
+            this.CursoIdAlumno.DataPropertyName = "CursoId";
+            this.CursoIdAlumno.HeaderText = "CursoIdAlumno";
+            this.CursoIdAlumno.Name = "CursoIdAlumno";
+            this.CursoIdAlumno.ReadOnly = true;
+            this.CursoIdAlumno.Visible = false;
             // 
-            // label8
+            // ApellidosAlumno
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(42, 44);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Observaciones";
+            this.ApellidosAlumno.DataPropertyName = "Apellidos";
+            this.ApellidosAlumno.HeaderText = "Apellidos";
+            this.ApellidosAlumno.Name = "ApellidosAlumno";
+            this.ApellidosAlumno.ReadOnly = true;
+            this.ApellidosAlumno.Width = 160;
             // 
-            // txtObservaciones
+            // Curso
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(162, 5);
-            this.txtObservaciones.Multiline = true;
-            this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(543, 60);
-            this.txtObservaciones.TabIndex = 15;
+            this.Curso.DataPropertyName = "Curso";
+            this.Curso.HeaderText = "Curso";
+            this.Curso.Name = "Curso";
+            this.Curso.ReadOnly = true;
+            this.Curso.Width = 50;
             // 
-            // chkPagaPorBanco
+            // SocioIdAlumno
             // 
-            this.chkPagaPorBanco.AutoSize = true;
-            this.chkPagaPorBanco.ForeColor = System.Drawing.Color.White;
-            this.chkPagaPorBanco.Location = new System.Drawing.Point(12, 1);
-            this.chkPagaPorBanco.Name = "chkPagaPorBanco";
-            this.chkPagaPorBanco.Size = new System.Drawing.Size(144, 21);
-            this.chkPagaPorBanco.TabIndex = 14;
-            this.chkPagaPorBanco.Text = "Pagado por banco";
-            this.chkPagaPorBanco.UseVisualStyleBackColor = true;
+            this.SocioIdAlumno.DataPropertyName = "SocioId";
+            this.SocioIdAlumno.HeaderText = "SocioIdAlumno";
+            this.SocioIdAlumno.Name = "SocioIdAlumno";
+            this.SocioIdAlumno.ReadOnly = true;
+            this.SocioIdAlumno.Visible = false;
+            // 
+            // IdAlumno
+            // 
+            this.IdAlumno.DataPropertyName = "Id";
+            this.IdAlumno.HeaderText = "IdAlumno";
+            this.IdAlumno.Name = "IdAlumno";
+            this.IdAlumno.ReadOnly = true;
+            this.IdAlumno.Visible = false;
             // 
             // FrmSocio
             // 
@@ -1005,6 +1025,8 @@
             this.Name = "FrmSocio";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSocio_FormClosed);
             this.Load += new System.EventHandler(this.FrmSocio_Load);
+            this.pnlPie.ResumeLayout(false);
+            this.pnlPie.PerformLayout();
             this.pnlAlumnos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1017,8 +1039,6 @@
             this.pnlImportarSocio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdImportarSocios)).EndInit();
             this.pnlButton.ResumeLayout(false);
-            this.pnlPie.ResumeLayout(false);
-            this.pnlPie.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1070,12 +1090,6 @@
         private Control.CustomButton BtnGuardarSocio;
         private Control.CustomButton BtnEditarSocio;
         private System.Windows.Forms.CheckBox chkPagaPorBanco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdAlumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidosAlumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdAlumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdTutor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -1099,5 +1113,13 @@
         private Control.CustomButton BtnEliminarAlumno;
         private Control.CustomButton btnCancelarCambiosTutor;
         private Control.CustomButton BtnCancelarCambiosAlumnos;
+        private System.Windows.Forms.ComboBox cmbGrupo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GrupoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CursoIdAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidosAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Curso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocioIdAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdAlumno;
     }
 }

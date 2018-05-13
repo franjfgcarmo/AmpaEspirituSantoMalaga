@@ -8,5 +8,6 @@
         public string Curso { get; set; }
         public int SocioId { get; set; }
         public int CursoId { get; set; }
+        public int? GrupoId { get; set; }
     }
 }

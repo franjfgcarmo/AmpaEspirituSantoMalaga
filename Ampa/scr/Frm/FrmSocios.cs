@@ -48,8 +48,9 @@ namespace Ampa.Frm
 
         private void cbmCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_suppressAutoSelection) return;
+            if (_suppressAutoSelection ) return;
             var cbm = (ComboBox) sender;
+            if (cbm.DataSource == null) return;
             cambioCurso = true;
             var curso = (CursoModel) cbm.SelectedItem;
             Program.ActualCurso = curso;
@@ -197,7 +198,13 @@ namespace Ampa.Frm
             }
             _countForm = fc.Count;
         }
-
+        private void btnInformes_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmInformes();
+            frm.Show();
+        }
         #endregion
+
+       
     }
 }
